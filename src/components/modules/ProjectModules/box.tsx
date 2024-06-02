@@ -52,7 +52,7 @@ export default function Box() {
     <div
       className={`${albert.className} min-h-screen flex justify-center bg-gradient-to-b from-blue-900 to-black text-white`}
     >
-      <div className="mt-32 w-full p-12">
+      {/* <div className="mt-32 w-full p-12">
         <div className="flex flex-col gap-12">
           <div className="font-semibold text-4xl text-left">My Projects</div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -79,7 +79,8 @@ export default function Box() {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
+      <div>Comming Soon!</div>
     </div>
   );
 }
