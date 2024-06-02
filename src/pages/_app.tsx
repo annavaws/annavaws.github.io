@@ -12,4 +12,3 @@ export default function App({ Component, pageProps }: AppProps) {
     </div>
   );
 }
-// import { FaBars, FaTimes } from 'react-icons/fa';
