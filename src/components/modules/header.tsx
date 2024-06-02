@@ -12,54 +12,80 @@ export default function Header() {
   const nameRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const titleWidth = titleRef.current?.offsetWidth || 0;
-    const nameWidth = nameRef.current?.offsetWidth || 0;
-    const containerWidth = window.innerWidth;
+    const updateDimensions = () => {
+      const titleWidth = titleRef.current?.offsetWidth ?? 0;
+      const nameWidth = nameRef.current?.offsetWidth ?? 0;
 
-    const interval = setInterval(() => {
-      setOffsetTitle((prevOffsetTitle) => {
-        if (prevOffsetTitle <= -titleWidth) {
-          return containerWidth;
-        }
-        return prevOffsetTitle - 1;
-      });
-      setOffsetName((prevOffsetName) => {
-        if (prevOffsetName >= containerWidth) {
-          return -nameWidth;
-        }
-        return prevOffsetName + 1;
-      });
-    }, 20);
+      const titleInterval = setInterval(() => {
+        setOffsetTitle((prevOffset) => {
+          const nextOffset = prevOffset - 1;
+          return nextOffset < -titleWidth ? titleWidth : nextOffset;
+        });
+      }, 100);
 
-    return () => clearInterval(interval);
-  }, [titleRef, nameRef]);
+      const nameInterval = setInterval(() => {
+        setOffsetName((prevOffset) => {
+          const nextOffset = prevOffset + 1;
+          return nextOffset > nameWidth ? -nameWidth : nextOffset;
+        });
+      }, 80);
+
+      return () => {
+        clearInterval(titleInterval);
+        clearInterval(nameInterval);
+      };
+    };
+
+    updateDimensions();
+  }, []);
 
   return (
     <div className="text-white bg-black min-h-screen flex justify-center items-center">
-      <div className="flex flex-col w-full h-full">
+      <div className="flex flex-col w-full h-full overflow-hidden gap-8 md:gap-2">
         <div
-          className={` select-none flex-row flex gap-2 font-bold text-[160px] text-gray-500 ${poppins.className}`}
-          style={{ marginLeft: offsetTitle }}
+          className={`select-none flex gap-1 md:gap-2 font-bold text-[80px] md:text-[120px] lg:text-[160px] text-gray-500 ${poppins.className}`}
+          style={{ transform: `translateX(${offsetTitle}px)` }}
           ref={titleRef}
         >
           {characters.map((char, index) => (
-            <div key={index} className="hover:text-white">
+            <span key={index} className="hover:text-white">
               {char}
-            </div>
+            </span>
           ))}
         </div>
 
+        {/* <hr
+          className="w-full border-t-4 border-transparent bg-gradient-to-r from-yellow-400 to-black via-yellow-400 repeat-x self-end mt-5 mb-5"
+          style={{ backgroundSize: "20px 4px" }}
+        ></hr> */}
+        <hr
+          className="w-1/2 border-t border-transparent bg-gradient-to-r from-black to-purple-500 self-end mt-5 mb-5 rounded-l-md"
+          style={{ height: "4px" }}
+        ></hr>
+        {/* <hr
+          className="w-1/2 border-t border-transparent bg-gradient-to-r from-purple-500 to-black self-right mt-5 mb-5 rounded-l-md"
+          style={{ height: "4px" }}
+        ></hr> */}
+
         <div
-          className={`select-none flex-row flex gap-2 font-bold text-[120px] text-gray-500 ${poppins.className}`}
-          style={{ marginLeft: offsetName }}
+          className={`select-none flex gap-1 md:gap-2 font-bold text-[40px] md:text-[80px] lg:text-[120px] text-gray-500 ${poppins.className}`}
+          style={{ transform: `translateX(${offsetName}px)` }}
           ref={nameRef}
         >
           {name.split("").map((char, index) => (
-            <div key={index} className="hover:text-white">
+            <span key={index} className="hover:text-purple-500">
               {char === " " ? "\u00A0" : char}
-            </div>
+            </span>
           ))}
         </div>
+        <hr
+          className="w-1/2 border-t border-transparent bg-gradient-to-r from-orange-500 to-black self-right mt-5 mb-5 rounded-l-md"
+          style={{ height: "4px" }}
+        ></hr>
+        {/* <hr
+          className="w-1/2 border-t border-transparent bg-gradient-to-r from-black to-orange-500 self-end mt-5 mb-5 rounded-l-md"
+          style={{ height: "4px" }}
+        ></hr> */}
       </div>
     </div>
   );
