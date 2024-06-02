@@ -21,14 +21,14 @@ export default function Header() {
           const nextOffset = prevOffset - 1;
           return nextOffset < -titleWidth ? titleWidth : nextOffset;
         });
-      }, 60);
+      }, 70);
 
       const nameInterval = setInterval(() => {
         setOffsetName((prevOffset) => {
           const nextOffset = prevOffset + 1;
           return nextOffset > nameWidth ? -nameWidth : nextOffset;
         });
-      }, 40);
+      }, 70);
 
       return () => {
         clearInterval(titleInterval);

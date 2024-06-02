@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { albert } from "@/styles/fonts";
+import { albert, poppins } from "@/styles/fonts";
 
 interface BlogPost {
   title: string;
@@ -39,18 +39,22 @@ const BlogPosts = () => {
   }, []);
 
   return (
-    <div className={`${albert.className}blog-container bg-black text-white`}>
-      <div className="font-semibold text-4xl text-center md:text-left p-12 pt-40">
+    <div
+      className={`${albert.className} blog-container bg-black text-white galaxy-background`}
+    >
+      <div className="font-semibold text-4xl text-center md:text-left p-8 pt-40">
         My Blog
       </div>
       <div className="posts-list">
         {posts.map((post) => (
           <div
             key={post.guid}
-            className=" text-white flex justify-center items-center"
+            className=" text-white flex justify-center items-center mx-3"
           >
-            <div className="w-full mx-5 p-12 md:w-3/4 md:p-5 rounded-xl shadow-lg shadow-gray-700 bg-black/70 mb-20">
-              <div className="text-xl md:text-4xl font-bold mb-4">
+            <div className=" w-full p-12 md:w-2/3 md:p-10 rounded-xl shadow-lg shadow-gray-700 bg-black/30 mb-6 mx-5 md:m-0 md:mb-12">
+              <div
+                className={`${poppins.className} text-xl md:text-4xl font-bold mb-4`}
+              >
                 {post.title}
               </div>
               <div className="text-md md:text-xl font-semibold mb-2">
