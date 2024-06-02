@@ -4,7 +4,7 @@ export default function About() {
   return (
     <>
       <div
-        className={`${albert.className} min-h-screen flex justify-center bg-black`}
+        className={`${albert.className} min-h-screen flex justify-center  bg-gradient-to-tl from-black to-gray-900 p-5`}
       >
         <div className="flex flex-col text-white p-32 justify-between">
           <div className="font-semibold text-[100px]">About Me</div>

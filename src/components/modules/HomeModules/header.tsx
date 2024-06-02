@@ -40,7 +40,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="text-white bg-black min-h-screen flex justify-center items-center">
+    <div className="text-white  bg-gradient-to-tr from-gray-900 to-black p-5 min-h-screen flex justify-center items-center">
       <div className="flex flex-col w-full h-full overflow-hidden gap-8 md:gap-2">
         <div
           className={`select-none flex gap-1 md:gap-2 font-bold text-[80px] md:text-[120px] lg:text-[160px] text-gray-500 ${poppins.className}`}
@@ -59,7 +59,7 @@ export default function Header() {
           style={{ backgroundSize: "20px 4px" }}
         ></hr> */}
         <hr
-          className="w-1/2 border-t border-transparent bg-gradient-to-r from-black to-purple-500 self-end mt-5 mb-5 rounded-l-md"
+          className="w-1/2 border-t border-transparent bg-gradient-to-r from-gray-900 to-purple-500 self-end mt-5 mb-5 rounded-l-md"
           style={{ height: "4px" }}
         ></hr>
         {/* <hr
@@ -79,7 +79,7 @@ export default function Header() {
           ))}
         </div>
         <hr
-          className="w-1/2 border-t border-transparent bg-gradient-to-r from-orange-500 to-black self-right mt-5 mb-5 rounded-l-md"
+          className="w-1/2 border-t border-transparent bg-gradient-to-r from-orange-500 to-gray-900 self-right mt-5 mb-5 rounded-l-md"
           style={{ height: "4px" }}
         ></hr>
         {/* <hr
