@@ -3,8 +3,10 @@ import Header from "@/components/modules/header";
 export default function Home() {
   return (
     <>
-      <Header />
-      <About />
+      <div className="relative z-10">
+        <Header />
+        <About />
+      </div>
     </>
   );
 }
