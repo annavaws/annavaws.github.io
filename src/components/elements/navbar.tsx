@@ -40,12 +40,12 @@ const Navbar = () => {
             Projects
           </span>
         </Link>
-        <Link href="/contact">
+        <Link href="/blog">
           <span
             className="text-white text-lg hover:text-orange-500 hover:underline hover:underline-offset-4"
             onClick={() => setIsOpen(false)}
           >
-            Contact Me
+            Blog
           </span>
         </Link>
       </div>
