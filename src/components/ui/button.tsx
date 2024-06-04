@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-export const WobbleButton = ({
+export const Button2 = ({
   children,
   className,
 }: {
