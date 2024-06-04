@@ -2,26 +2,16 @@ import { albert } from "@/styles/fonts";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-import styles from "./project.module.css";
 import { Button2 } from "@/components/ui/button";
-import Link from "next/link";
 const container = {
   hidden: { opacity: 1, scale: 0 },
   visible: {
     opacity: 1,
     scale: 1,
     transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2,
+      delayChildren: 0.5,
+      staggerChildren: 0.8,
     },
-  },
-};
-
-const item = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
   },
 };
 
@@ -96,7 +86,6 @@ export default function Box() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {projects.map((project) => (
               <motion.ul
-                className={`${styles.container}`}
                 variants={container}
                 initial="hidden"
                 animate="visible"
@@ -130,7 +119,7 @@ export default function Box() {
                           </Button2>
                         ))}
                       </div>
-                      <div className="flex flex-row justify-between w-full mt-2 bg-red-400">
+                      <div className="flex flex-row justify-between w-full mt-2">
                         <div className="w-1/2">
                           <a
                             href={project.live}
