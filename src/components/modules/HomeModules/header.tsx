@@ -43,7 +43,7 @@ export default function Header() {
     <div className="text-white  bg-gradient-to-tr from-gray-900 to-black p-5 min-h-screen flex justify-center items-center">
       <div className="flex flex-col w-full h-full overflow-hidden gap-8 md:gap-2">
         <div
-          className={`select-none flex gap-1 md:gap-2 font-bold text-[80px] md:text-[110px] lg:text-[130px] text-gray-500 ${poppins.className}`}
+          className={`select-none flex gap-1 md:gap-2 font-bold text-[50px] md:text-[80px] lg:text-[110px] text-gray-500 ${poppins.className}`}
           style={{ transform: `translateX(${offsetTitle}px)` }}
           ref={titleRef}
         >
