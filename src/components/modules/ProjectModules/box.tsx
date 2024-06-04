@@ -93,7 +93,7 @@ export default function Box() {
       <div className="mt-32 w-full p-12">
         <div className="flex flex-col gap-12">
           <div className="font-semibold text-4xl text-left">My Projects</div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 ">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {projects.map((project) => (
               <motion.ul
                 className={`${styles.container}`}
@@ -104,7 +104,7 @@ export default function Box() {
               >
                 <div
                   key={project.id}
-                  className={`group relative w-full h-[330px] border hover:border-gray-100 border-gray-500 rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
+                  className={`group relative w-full h-[430px] md:h-[400px] lg:h-[330px] border hover:border-gray-100 border-gray-500 rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
                 >
                   <Image
                     src={project.image}
@@ -115,7 +115,7 @@ export default function Box() {
                   />
                   <div className="absolute inset-0 flex-col bg-black bg-opacity-60 rounded-xl flex items-center justify-center p-5 opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-md transition duration-300 ease-in-out">
                     {/* <div className="absolute inset-0 object-cover object-center xl:object-bottom opacity-0 group-hover:opacity-100 transition-opacity"> */}
-                    <div className="text-justify h-full mx-10 p-8 flex flex-col w-full justify-between">
+                    <div className="text-justify h-full mx-10 p-3 md:p-8 flex flex-col w-full justify-between">
                       <div className="text-xl font-bold mb-2">
                         {project.title}
                       </div>
@@ -123,18 +123,18 @@ export default function Box() {
                       <div className="text-md italic font-bold flex flex-wrap gap-2">
                         {project.techStack.map((tech) => (
                           <Button2
-                            className="cursor-default hover:text-purple-500 hover:border-purple-500 px-6 py-2 bg-transparent text-white border-white border rounded-full"
+                            className="cursor-default hover:text-purple-300 hover:border-purple-300 px-6 py-2 bg-transparent text-white border-white border rounded-full"
                             key={tech}
                           >
                             {tech}
                           </Button2>
                         ))}
                       </div>
-                      <div className="flex flex-row justify-between w-full mt-2">
+                      <div className="flex flex-row justify-between w-full mt-2 bg-red-400">
                         <div className="w-1/2">
                           <a
                             href={project.live}
-                            className="w-1/3 mr-3 whitespace-nowrap flex flex-grow items-center space-x-2"
+                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2"
                           >
                             <svg
                               viewBox="0 0 24 24"
@@ -168,7 +168,7 @@ export default function Box() {
                         <div className="w-1/2">
                           <a
                             href={project.live}
-                            className="w-1/3 mr-3 whitespace-nowrap flex flex-grow items-center space-x-2 "
+                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2 "
                           >
                             <svg
                               viewBox="0 0 24 24"
