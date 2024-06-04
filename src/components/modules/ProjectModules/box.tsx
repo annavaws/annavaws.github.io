@@ -59,7 +59,7 @@ export default function Box() {
     },
     {
       id: 5,
-      image: "/img3.png",
+      image: "/img4.png",
       title: "Nutrious",
       description:
         "A project for the Platform-based Programming class aimed at enhancing nutritional standards and promoting a healthier lifestyle in Indonesia.",
@@ -85,7 +85,7 @@ export default function Box() {
               >
                 <div
                   key={project.id}
-                  className={`group relative w-full h-[300px] border border-slate-200 rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
+                  className={`group relative w-full h-[300px] border border-opacity-20 hover:border-opacity-60 border-white rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
                 >
                   <Image
                     src={project.image}
