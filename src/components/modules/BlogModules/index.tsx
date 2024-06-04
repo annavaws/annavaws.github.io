@@ -42,7 +42,7 @@ const BlogPosts = () => {
     <div
       className={`${albert.className} blog-container bg-black text-white galaxy-background`}
     >
-      <div className="font-semibold text-4xl text-center md:text-left p-8 pt-40 mb-10">
+      <div className="ml-10 font-semibold text-4xl text-center md:text-left p-8 pt-40 mb-10">
         My Blog
       </div>
       <div className="posts-list">

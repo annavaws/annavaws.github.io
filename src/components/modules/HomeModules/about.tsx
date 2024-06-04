@@ -1,3 +1,5 @@
+import { WobbleButton } from "@/components/ui/button";
+import { WoobleButton } from "@/components/ui/wooble-button";
 import { albert } from "@/styles/fonts";
 import Link from "next/link";
 
@@ -17,13 +19,14 @@ export default function About() {
             enthusiasm for mastering new technologies drives her to create
             comprehensive solutions in her projects.
           </div>
-          <div>
-            <Link
-              href={"/about"}
-              className="inline-block border border-white font-semibold text-md md:text-2xl py-3 px-10 rounded-[60px] mt-2 transition-all duration-300 hover:bg-purple-500 hover:text-black hover:border-black z-10
-        "
-            >
-              Get to know me more
+
+          <div className="flex">
+            <Link href={"/about"}>
+              <WoobleButton className="px-10">
+                <span className="font-semibold text-md md:text-2xl">
+                  Get to know me more
+                </span>
+              </WoobleButton>
             </Link>
           </div>
         </div>

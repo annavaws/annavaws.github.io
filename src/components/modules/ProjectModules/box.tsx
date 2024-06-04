@@ -29,43 +29,41 @@ export default function Box() {
       id: 1,
       image: "/img1.png",
       title: "vlecture",
-      description: "This is an awesome project using React and TailwindCSS.",
+      description:
+        "A notetaking companion app for students to upload the audio of their lectures and create personalized notes, flashcards, and quizzes based on the audio transcription.",
       techStack: "React, TailwindCSS",
     },
     {
       id: 2,
       image: "/img2.png",
-      title: "Project 2",
-      description: "A backend API built with Node.js and Express.",
-      techStack: "Node.js, Express",
+      title: "Nubengine",
+      description:
+        "A project for the Information Retrieval class utlizing TF-IDF for indexing and uses medical datasets from ir-datasets",
+      techStack: "Python, Django, Tailwind, GCP",
     },
     {
       id: 3,
       image: "/img3.png",
-      title: "Project 3",
-      description: "A mobile app created with Flutter.",
-      techStack: "Flutter, Dart",
+      title: "Invite",
+      description:
+        "A team-matcher project for the Software Engineering class for students to find teams to participate in a competition",
+      techStack: "Python, Django, Tailwind, GCP, PostgreSQL, Docker",
     },
     {
       id: 4,
       image: "/img1.png",
-      title: "Project 4",
-      description: "Data visualization with D3.js.",
-      techStack: "D3.js",
+      title: "CariPasien",
+      description:
+        "A project for the Advanced Programming class to facilitate doctor-patient for tooth treatments",
+      techStack: "Spring Boot, NextJS, Tailwind, PostgreSQL, GCP",
     },
     {
       id: 5,
       image: "/img3.png",
-      title: "Project 5",
-      description: "A full-stack application using MERN stack.",
-      techStack: "MongoDB, Express, React, Node.js",
-    },
-    {
-      id: 6,
-      image: "/img2.png",
-      title: "Project 6",
-      description: "An ecommerce platform built with Laravel.",
-      techStack: "Laravel, PHP",
+      title: "Nutrious",
+      description:
+        "A project for the Platform-based Programming class aimed at enhancing nutritional standards and promoting a healthier lifestyle in Indonesia.",
+      techStack: "Django, Flutter, Bootstrap, Railway",
     },
   ];
 
@@ -73,21 +71,21 @@ export default function Box() {
     <div
       className={`${albert.className}  min-h-screen flex justify-center bg-gradient-to-b from-blue-900 to-black text-white`}
     >
-      <div className="mt-32 w-full p-12">
+      <div className="mt-32 ml-10 w-full p-12">
         <div className="flex flex-col gap-12">
           <div className="font-semibold text-4xl text-left">My Projects</div>
-          <div className=" grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <motion.ul
-              className={`${styles.container}`}
-              variants={container}
-              initial="hidden"
-              animate="visible"
-            >
-              {projects.map((project) => (
-                <motion.li
-                  variants={item}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
+            {projects.map((project) => (
+              <motion.ul
+                className={`${styles.container}`}
+                variants={container}
+                initial="hidden"
+                animate="visible"
+                key={project.id}
+              >
+                <div
                   key={project.id}
-                  className={`${styles.item} group relative w-full h-[400px] rounded-xl shadow-lg shadow-gray-600 transition duration-500 ease-in-out transform hover:-translate-y-2`}
+                  className={`group relative w-full h-[300px] border border-slate-200 rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
                 >
                   <Image
                     src={project.image}
@@ -97,17 +95,20 @@ export default function Box() {
                     alt={project.title}
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-60 rounded-xl flex items-center justify-center p-5 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
-                    <div className="text-center">
-                      <h3 className="text-xl font-bold mb-2">
+                    {/* <div className="absolute inset-0 object-cover object-center xl:object-bottom opacity-0 group-hover:opacity-100 transition-opacity"> */}
+                    <div className="text-justify m-10 flex flex-col w-full">
+                      <div className="text-xl font-bold mb-2">
                         {project.title}
-                      </h3>
-                      <p className="mb-2">{project.description}</p>
-                      <p className="text-sm italic">{project.techStack}</p>
+                      </div>
+                      <div className="mb-2">{project.description}</div>
+                      <div className="text-md italic font-bold">
+                        {project.techStack}
+                      </div>
                     </div>
                   </div>
-                </motion.li>
-              ))}
-            </motion.ul>
+                </div>
+              </motion.ul>
+            ))}
           </div>
         </div>
       </div>
