@@ -25,8 +25,8 @@ export default function AboutMore() {
               About Me
             </h1>
             <p className="text-lg md:text-xl text-justify">
-              Annava is a third-year Computer Science student at the University
-              of Indonesia, passionately diving into Software Engineering. She’s
+              <b>Annava</b>, a third-year Computer Science student at the University
+              of Indonesia, is deeply passionate about <b> Software Engineering</b>. She’s
               dedicated to expanding her expertise, actively engaging in
               learning and applying her skills in both Front End and Back End
               Development. She is proficient in programming languages such as
