@@ -11,7 +11,7 @@ export default function AboutMore() {
     >
       <div className="max-w-4xl mt-40 mx-auto p-5 bg-black/60 rounded-xl shadow-lg shadow-gray-600">
         <div className="flex flex-col lg:flex-row items-center gap-10">
-          <div className="relative md:sticky md:top-40 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-1/2">
+          <div className="relative lg:sticky lg:top-40 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-1/2">
             <Image
               src="/me.jpg"
               layout="fill"
@@ -24,23 +24,26 @@ export default function AboutMore() {
             <h1 className="font-bold text-4xl md:text-6xl text-center mb-5">
               About Me
             </h1>
-            <p className="text-lg md:text-xl text-justify">
-              Annava is a third-year Computer Science student at the University
-              of Indonesia, passionately diving into Software Engineering. She’s
-              dedicated to expanding her expertise, actively engaging in
-              learning and applying her skills in both Front End and Back End
-              Development. She is proficient in programming languages such as
-              Python, Java, JavaScript, TypeScript, HTML, and CSS, and adept at
-              utilizing PostgreSQL for robust database solutions.
+            <p className="text-lg md:text-xl text-justify text-gray-300">
+              <b>Annava</b>, a third-year Computer Science student at the
+              University of Indonesia, is deeply passionate about{" "}
+              <b> Software Engineering</b>. She’s dedicated to expanding her
+              expertise, actively engaging in learning and applying her skills
+              in both Front End and Back End Development. She is proficient in
+              programming languages such as Python, Java, JavaScript,
+              TypeScript, HTML, and CSS. Annava leverages PostgreSQL for robust
+              database solutions.
             </p>
-            <p className="text-lg md:text-xl text-justify mt-5">
+            <p className="text-lg md:text-xl text-justify mt-5 text-gray-300">
               Her enthusiasm for software engineering is evident in her mastery
               of diverse frameworks including Django, Flutter, Spring Boot,
-              ReactJS, Bootstrap, Tailwind, and Laravel. This enables her to
-              deliver responsive, aesthetically appealing applications.
-              Committed to continual learning, Annava is driven to explore
-              cutting-edge technologies and innovative solutions, aiming to make
-              a meaningful impact in the software engineering field.
+              ReactJS, Bootstrap, and Laravel. This enables her to deliver
+              responsive, aesthetically appealing applications. Committed to
+              continual learning, Annava eagerly explores cutting-edge
+              technologies, aiming to make a meaningful impact in the software
+              engineering field. Whether it’s crafting elegant user interfaces
+              or optimizing server-side logic, Annava’s dedication and curiosity
+              drive her forward.
             </p>
           </div>
         </div>

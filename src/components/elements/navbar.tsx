@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { poppins } from "@/styles/fonts";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // State to handle menu toggle
+  const [hasScrolled, setHasScrolled] = useState(false); // State to handle scroll
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <nav
-      className={`${poppins.className} backdrop-blur-xl fixed top-0 left-0 right-0 z-50 w-full h-[10vh] flex flex-row justify-between items-center px-10 text-white`}
-      style={{ boxShadow: "0 2px 10px rgba(255, 255, 255, 0.5)" }}
+      className={`${
+        poppins.className
+      } backdrop-blur-xl fixed top-0 left-0 right-0 z-50 w-full h-[10vh] flex flex-row justify-between items-center px-10 text-white ${
+        hasScrolled ? "border-b border-gray-400" : ""
+      }`}
     >
       <Link href="/">
         <span className="w-[140px] text-lg hover:text-orange-500 hover:underline hover:underline-offset-4">
