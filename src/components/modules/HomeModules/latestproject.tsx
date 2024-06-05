@@ -15,7 +15,7 @@ const container = {
   },
 };
 
-export default function Box() {
+export default function Latest() {
   const projects = [
     {
       id: 1,
@@ -54,26 +54,6 @@ export default function Box() {
       live: "http://rpl-a12.et.r.appspot.com/",
       repo: "https://github.com/daffafaizan/invite-app",
     },
-    {
-      id: 4,
-      image: "/caper.png",
-      title: "CariPasien",
-      description:
-        "A project for the Advanced Programming class to facilitate doctor-patient for tooth treatments",
-      techStack: ["Spring Boot", "NextJS", "Tailwind", "PostgreSQL", "GCP"],
-      live: "",
-      repo: "",
-    },
-    {
-      id: 5,
-      image: "/nutrious.png",
-      title: "Nutrious",
-      description:
-        "A project for the Platform-based Programming class aimed at enhancing nutritional standards and promoting a healthier lifestyle in Indonesia.",
-      techStack: ["Django", "Flutter", "Bootstrap", "Railway"],
-      live: "https://nutrious.herokuapp.com/",
-      repo: "https://github.com/jaycentg/nutrious",
-    },
   ];
 
   return (
@@ -82,7 +62,9 @@ export default function Box() {
     >
       <div className="mt-32 w-full p-12">
         <div className="flex flex-col gap-12">
-          <div className="font-semibold text-4xl text-left">My Projects</div>
+          <div className="font-semibold text-4xl text-left">
+            Latest Projects
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {projects.map((project) => (
               <motion.ul
@@ -93,7 +75,7 @@ export default function Box() {
               >
                 <div
                   key={project.id}
-                  className={`group relative w-full h-[430px] md:h-[400px] lg:h-[340px] border hover:border-gray-100 border-gray-500 rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
+                  className={`group relative w-full h-[430px] md:h-[400px] lg:h-[330px] border hover:border-gray-100 border-gray-500 rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
                 >
                   <Image
                     src={project.image}
