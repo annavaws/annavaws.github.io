@@ -42,7 +42,7 @@ const BlogPosts = () => {
     <div
       className={`${albert.className} blog-container bg-black text-white galaxy-background`}
     >
-      <div className="font-semibold text-4xl text-center md:text-left p-8 pt-40">
+      <div className="ml-10 font-semibold text-4xl text-center md:text-left p-8 pt-40 mb-10">
         My Blog
       </div>
       <div className="posts-list">
@@ -51,9 +51,9 @@ const BlogPosts = () => {
             key={post.guid}
             className=" text-white flex justify-center items-center mx-3"
           >
-            <div className=" w-full p-12 md:w-2/3 md:p-10 rounded-xl shadow-lg shadow-gray-700 bg-black/30 mb-6 mx-5 md:m-0 md:mb-12">
+            <div className=" w-full p-12 md:w-2/3 md:p-10 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12">
               <div
-                className={`${poppins.className} text-xl md:text-4xl font-bold mb-4`}
+                className={`${poppins.className} text-xl md:text-3xl font-bold mb-4`}
               >
                 {post.title}
               </div>
