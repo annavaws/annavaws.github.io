@@ -23,7 +23,7 @@ export default function Box() {
       title: "vlecture",
       description:
         "A notetaking companion app for students to upload the audio of their lectures and create personalized notes, flashcards, and quizzes based on the audio transcription.",
-      techStack: ["React", "TailwindCSS"],
+      techStack: ["FastAPI", "NextJS", "MongoDB", "Supabase", "Railway"],
       live: "https://vlecture.tech/",
       repo: "https://github.com/vlecture/vlecture-api",
     },
@@ -34,8 +34,8 @@ export default function Box() {
       description:
         "A project for the Information Retrieval class utlizing TF-IDF for indexing and uses medical datasets from ir-datasets",
       techStack: ["Python", "Django", "Tailwind", "GCP"],
-      live: "",
-      repo: "",
+      live: "http://nubengine.annavaws.com",
+      repo: "https://github.com/daffafaizan/nubengine",
     },
     {
       id: 3,
@@ -61,7 +61,7 @@ export default function Box() {
       description:
         "A project for the Advanced Programming class to facilitate doctor-patient for tooth treatments",
       techStack: ["Spring Boot", "NextJS", "Tailwind", "PostgreSQL", "GCP"],
-      live: "",
+      live: "http://caper-dev.vercel.app",
       repo: "",
     },
     {
@@ -73,6 +73,16 @@ export default function Box() {
       techStack: ["Django", "Flutter", "Bootstrap", "Railway"],
       live: "https://nutrious.herokuapp.com/",
       repo: "https://github.com/jaycentg/nutrious",
+    },
+    {
+      id: 6,
+      image: "/portfolio.png",
+      title: "Portfolio",
+      description:
+        "My portfolio website featuring finished projects, technologies, blogs, and socials.",
+      techStack: ["NextJS", "TypeScript", "Tailwind", "Netlify"],
+      live: "https://annavaws.com",
+      repo: "https://github.com/annavaws/my-portfolio",
     },
   ];
 
@@ -123,6 +133,7 @@ export default function Box() {
                         <div className="w-1/2">
                           <a
                             href={project.live}
+                            target="_blank"
                             className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2"
                           >
                             <svg
@@ -157,6 +168,7 @@ export default function Box() {
                         <div className="w-1/2">
                           <a
                             href={project.repo}
+                            target="_blank"
                             className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2 "
                           >
                             <svg

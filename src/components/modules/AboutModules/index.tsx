@@ -9,9 +9,9 @@ export default function AboutMore() {
     <div
       className={`${albert.className} min-h-screen flex items-center justify-center bg-gradient-to-b from-purple-900 to-black p-5`}
     >
-      <div className="max-w-4xl mt-40 mx-auto p-5 bg-black/60 rounded-xl shadow-lg shadow-gray-600">
+      <div className="max-w-5xl mt-40 mx-auto p-5 bg-black/60 rounded-xl shadow-lg shadow-gray-600">
         <div className="flex flex-col lg:flex-row items-center gap-10">
-          <div className="relative lg:sticky lg:top-40 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-1/2">
+          <div className="relative lg:sticky lg:top-40 w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
             <Image
               src="/me.jpg"
               layout="fill"
