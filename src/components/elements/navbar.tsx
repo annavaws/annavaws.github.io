@@ -27,7 +27,7 @@ const Navbar = () => {
       className={`${
         poppins.className
       } backdrop-blur-xl fixed top-0 left-0 right-0 z-50 w-full h-[10vh] flex flex-row justify-between items-center px-10 text-slate-200 ${
-        hasScrolled ? "border-b border-gray-400" : ""
+        hasScrolled ? "border-b-[0.1px] border-gray-500" : ""
       }`}
     >
       <Link href="/">

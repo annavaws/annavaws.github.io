@@ -58,7 +58,7 @@ export default function Latest() {
 
   return (
     <div
-      className={`${albert.className} flex justify-center bg-gradient-to-bl from-black to-gray-900  backdrop-blur-xl text-slate-200`}
+      className={`${albert.className} flex justify-center bg-gradient-to-t from-black to-gray-900  backdrop-blur-xl text-slate-200`}
     >
       <div className="w-full">
         <div className="flex flex-col text-slate-200 p-10 md:p-32 justify-between gap-10">
