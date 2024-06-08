@@ -8,7 +8,7 @@ export default function Home() {
       <div className="relative z-10">
         <Header />
         <About />
-        <Latest />
+        {/* <Latest /> */}
       </div>
     </>
   );
