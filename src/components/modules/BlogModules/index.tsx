@@ -64,7 +64,7 @@ const BlogPosts: React.FC = () => {
               className="flex justify-center items-center mx-3"
             >
               <div
-                className={`w-full p-12 md:w-2/3 md:p-10 rounded-xl border 
+                className={`w-full p-12 md:w-2/3 md:p-10 rounded-xl border duration-500 ease-in-out
                   ${
                     index % 2 === 0 ? "hover:-rotate-2" : "hover:rotate-2"
                   } hover:duration-500 hover:border-gray-100 border-gray-500 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12`}

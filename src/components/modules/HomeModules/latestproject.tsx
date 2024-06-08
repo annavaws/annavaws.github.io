@@ -58,9 +58,9 @@ export default function Latest() {
 
   return (
     <div
-      className={`${albert.className}  min-h-screen flex justify-center bg-gradient-to-bl from-black to-gray-900  backdrop-blur-xl text-slate-200`}
+      className={`${albert.className} flex justify-center bg-gradient-to-bl from-black to-gray-900  backdrop-blur-xl text-slate-200`}
     >
-      <div className="mt-32 w-full p-12">
+      <div className="w-full">
         <div className="flex flex-col text-slate-200 p-10 md:p-32 justify-between gap-10">
           <div className="font-semibold text-5xl md:text-5xl">
             Latest Projects
@@ -94,7 +94,7 @@ export default function Latest() {
                       <div className="text-md italic font-bold flex flex-wrap gap-2">
                         {project.techStack.map((tech) => (
                           <Button2
-                            className="cursor-default hover:text-purple-300 hover:border-purple-300 px-6 py-2 bg-transparent text-slate-200 border-white border rounded-full"
+                            className="cursor-default hover:text-purple-300 hover:border-purple-300 px-6 py-2 bg-transparent text-white border-white border rounded-full"
                             key={tech}
                           >
                             {tech}

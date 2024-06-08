@@ -11,6 +11,7 @@ const container = {
     transition: {
       delayChildren: 0.5,
       staggerChildren: 0.8,
+      duration: 0.4,
     },
   },
 };
@@ -90,9 +91,11 @@ export default function Box() {
     <div
       className={`${albert.className}  min-h-screen flex justify-center bg-gradient-to-b from-blue-900 to-black text-slate-200`}
     >
-      <div className="mt-32 w-full p-12 md:px-24 lg:p-12">
+      <div className="w-full mt-32 md:px-24 lg:p-12 md:ml-10 p-8 pt-32 md:pt-40 mb-10">
         <div className="flex flex-col gap-12">
-          <div className="font-semibold text-4xl text-left">My Projects</div>
+          <div className="font-semibold text-4xl text-center md:text-left">
+            My Projects
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {projects.map((project) => (
               <motion.ul
