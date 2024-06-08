@@ -47,23 +47,28 @@ const BlogPosts: React.FC = () => {
     <div
       className={`${albert.className} blog-container bg-black text-white galaxy-background`}
     >
-      <div className="ml-10 font-semibold text-4xl text-center md:text-left p-8 pt-40 mb-10">
+      <div className="font-semibold text-4xl text-center md:ml-10 md:text-left p-8 pt-32 md:pt-40 mb-10">
         My Blog
       </div>
       {loading ? (
-        <div className="flex flex-col justify-center items-center mx-3">
-          <Skeleton className="w-full p-12 md:w-2/3 md:p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
-          <Skeleton className="w-full p-12 md:w-2/3 md:p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
-          <Skeleton className="w-full p-12 md:w-2/3 md:p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
+        <div className="flex flex-col justify-center items-center mx-3 px-12">
+          <Skeleton className="w-full p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
+          <Skeleton className="w-full p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
+          <Skeleton className="w-full p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
         </div>
       ) : (
         <div className="posts-list">
-          {posts.map((post) => (
+          {posts.map((post, index) => (
             <div
               key={post.guid}
               className="flex justify-center items-center mx-3"
             >
-              <div className="w-full p-12 md:w-2/3 md:p-10 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12">
+              <div
+                className={`w-full p-12 md:w-2/3 md:p-10 rounded-xl border 
+                  ${
+                    index % 2 === 0 ? "hover:-rotate-2" : "hover:rotate-2"
+                  } hover:duration-500 hover:border-gray-100 border-gray-500 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12`}
+              >
                 <div
                   className={`${poppins.className} text-xl md:text-3xl font-bold mb-4`}
                 >
