@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { albert, poppins } from "@/styles/fonts";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface BlogPost {
   title: string;
   link: string;
   guid: string;
   pubDate: string;
-  content: string;
-  thumbnail: string;
 }
 
 interface BlogApiResponse {
   status: string;
-  feed: any;
   items: BlogPost[];
 }
 
-const BlogPosts = () => {
+const BlogPosts: React.FC = () => {
+  const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
@@ -29,49 +28,68 @@ const BlogPosts = () => {
         if (data.status === "ok") {
           console.log(data);
           setPosts(data.items);
+          setLoading(false);
         }
       } catch (error) {
         console.error("Error fetching posts:", error);
+        setLoading(false);
       }
     };
 
     fetchPosts();
   }, []);
 
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString();
+  };
+
   return (
     <div
-      className={`${albert.className} blog-container bg-black text-white galaxy-background`}
+      className={`${albert.className} blog-container bg-black text-slate-200 galaxy-background`}
     >
-      <div className="ml-10 font-semibold text-4xl text-center md:text-left p-8 pt-40 mb-10">
+      <div className="font-semibold text-4xl text-center md:ml-10 md:text-left p-8 pt-32 md:pt-40 mb-10">
         My Blog
       </div>
-      <div className="posts-list">
-        {posts.map((post) => (
-          <div
-            key={post.guid}
-            className=" text-white flex justify-center items-center mx-3"
-          >
-            <div className=" w-full p-12 md:w-2/3 md:p-10 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12">
+      {loading ? (
+        <div className="flex flex-col justify-center items-center mx-3 px-12">
+          <Skeleton className="w-full p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
+          <Skeleton className="w-full p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
+          <Skeleton className="w-full p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
+        </div>
+      ) : (
+        <div className="posts-list">
+          {posts.map((post, index) => (
+            <div
+              key={post.guid}
+              className="flex justify-center items-center mx-3"
+            >
               <div
-                className={`${poppins.className} text-xl md:text-3xl font-bold mb-4`}
+                className={`w-full p-12 md:w-2/3 md:p-10 rounded-xl border duration-500 ease-in-out
+                  ${
+                    index % 2 === 0 ? "hover:-rotate-2" : "hover:rotate-2"
+                  } hover:duration-500 hover:border-gray-100 border-gray-500 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12`}
               >
-                {post.title}
+                <div
+                  className={`${poppins.className} text-xl md:text-3xl font-bold mb-4`}
+                >
+                  {post.title}
+                </div>
+                <div className="text-md md:text-xl font-semibold mb-2">
+                  Published on: {formatDate(post.pubDate)}
+                </div>
+                <a
+                  href={post.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:underline hover:underline-offset-2"
+                >
+                  Read more on Medium
+                </a>
               </div>
-              <div className="text-md md:text-xl font-semibold mb-2">
-                Published on: {new Date(post.pubDate).toLocaleDateString()}
-              </div>
-              <a
-                href={post.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:underline hover:underline-offset-2"
-              >
-                Read more on Medium
-              </a>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

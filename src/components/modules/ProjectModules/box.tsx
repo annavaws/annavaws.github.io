@@ -11,6 +11,7 @@ const container = {
     transition: {
       delayChildren: 0.5,
       staggerChildren: 0.8,
+      duration: 0.4,
     },
   },
 };
@@ -23,7 +24,7 @@ export default function Box() {
       title: "vlecture",
       description:
         "A notetaking companion app for students to upload the audio of their lectures and create personalized notes, flashcards, and quizzes based on the audio transcription.",
-      techStack: ["React", "TailwindCSS"],
+      techStack: ["FastAPI", "NextJS", "MongoDB", "Supabase", "Railway"],
       live: "https://vlecture.tech/",
       repo: "https://github.com/vlecture/vlecture-api",
     },
@@ -34,8 +35,8 @@ export default function Box() {
       description:
         "A project for the Information Retrieval class utlizing TF-IDF for indexing and uses medical datasets from ir-datasets",
       techStack: ["Python", "Django", "Tailwind", "GCP"],
-      live: "",
-      repo: "",
+      live: "http://nubengine.annavaws.com",
+      repo: "https://github.com/daffafaizan/nubengine",
     },
     {
       id: 3,
@@ -61,7 +62,7 @@ export default function Box() {
       description:
         "A project for the Advanced Programming class to facilitate doctor-patient for tooth treatments",
       techStack: ["Spring Boot", "NextJS", "Tailwind", "PostgreSQL", "GCP"],
-      live: "",
+      live: "http://caper-dev.vercel.app",
       repo: "",
     },
     {
@@ -74,15 +75,27 @@ export default function Box() {
       live: "https://nutrious.herokuapp.com/",
       repo: "https://github.com/jaycentg/nutrious",
     },
+    {
+      id: 6,
+      image: "/portfolio.png",
+      title: "Portfolio",
+      description:
+        "My portfolio website featuring finished projects, technologies, blogs, and socials.",
+      techStack: ["NextJS", "TypeScript", "Tailwind", "Netlify"],
+      live: "https://annavaws.com",
+      repo: "https://github.com/annavaws/my-portfolio",
+    },
   ];
 
   return (
     <div
-      className={`${albert.className}  min-h-screen flex justify-center bg-gradient-to-b from-blue-900 to-black text-white`}
+      className={`${albert.className}  min-h-screen flex justify-center bg-gradient-to-b from-blue-900 to-black text-slate-200`}
     >
-      <div className="mt-32 w-full p-12">
+      <div className="w-full mt-32 md:px-24 lg:p-12 md:ml-10 p-8 pt-32 md:pt-40 mb-10">
         <div className="flex flex-col gap-12">
-          <div className="font-semibold text-4xl text-left">My Projects</div>
+          <div className="font-semibold text-4xl text-center md:text-left">
+            My Projects
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {projects.map((project) => (
               <motion.ul
@@ -93,7 +106,7 @@ export default function Box() {
               >
                 <div
                   key={project.id}
-                  className={`group relative w-full h-[430px] md:h-[400px] lg:h-[340px] border hover:border-gray-100 border-gray-500 rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
+                  className={`group relative w-full h-[330px] md:h-[450px] lg:h-[340px] border hover:border-gray-100 border-gray-500 rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
                 >
                   <Image
                     src={project.image}
@@ -108,11 +121,13 @@ export default function Box() {
                       <div className="text-xl font-bold mb-2">
                         {project.title}
                       </div>
-                      <div className="mb-2">{project.description}</div>
+                      <div className="mb-2 hidden md:block">
+                        {project.description}
+                      </div>
                       <div className="text-md italic font-bold flex flex-wrap gap-2">
                         {project.techStack.map((tech) => (
                           <Button2
-                            className="cursor-default hover:text-purple-300 hover:border-purple-300 px-6 py-2 bg-transparent text-white border-white border rounded-full"
+                            className="cursor-default hover:text-purple-300 hover:border-purple-300 px-6 py-2 bg-transparent text-slate-200 border-white border rounded-full"
                             key={tech}
                           >
                             {tech}
@@ -123,7 +138,8 @@ export default function Box() {
                         <div className="w-1/2">
                           <a
                             href={project.live}
-                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2"
+                            target="_blank"
+                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2 hover:text-orange-500 hover:scale-105"
                           >
                             <svg
                               viewBox="0 0 24 24"
@@ -154,10 +170,11 @@ export default function Box() {
                           </a>
                         </div>
 
-                        <div className="w-1/2">
+                        <div className="w-1/2 hover:text-orange-500 hover:scale-105">
                           <a
                             href={project.repo}
-                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2 "
+                            target="_blank"
+                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2"
                           >
                             <svg
                               viewBox="0 0 24 24"
@@ -184,6 +201,7 @@ export default function Box() {
                                 ></path>{" "}
                               </g>
                             </svg>
+
                             <div>Repo</div>
                           </a>
                         </div>

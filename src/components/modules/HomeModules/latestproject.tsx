@@ -23,7 +23,7 @@ export default function Latest() {
       title: "vlecture",
       description:
         "A notetaking companion app for students to upload the audio of their lectures and create personalized notes, flashcards, and quizzes based on the audio transcription.",
-      techStack: ["React", "TailwindCSS"],
+      techStack: ["FastAPI", "NextJS", "MongoDB", "Supabase", "Railway"],
       live: "https://vlecture.tech/",
       repo: "https://github.com/vlecture/vlecture-api",
     },
@@ -34,8 +34,8 @@ export default function Latest() {
       description:
         "A project for the Information Retrieval class utlizing TF-IDF for indexing and uses medical datasets from ir-datasets",
       techStack: ["Python", "Django", "Tailwind", "GCP"],
-      live: "",
-      repo: "",
+      live: "http://nubengine.annavaws.com",
+      repo: "https://github.com/daffafaizan/nubengine",
     },
     {
       id: 3,
@@ -54,15 +54,25 @@ export default function Latest() {
       live: "http://rpl-a12.et.r.appspot.com/",
       repo: "https://github.com/daffafaizan/invite-app",
     },
+    {
+      id: 4,
+      image: "/portfolio.png",
+      title: "Portfolio",
+      description:
+        "My portfolio website featuring finished projects, technologies, blogs, and socials.",
+      techStack: ["NextJS", "TypeScript", "Tailwind", "Netlify"],
+      live: "https://annavaws.com",
+      repo: "https://github.com/annavaws/my-portfolio",
+    },
   ];
 
   return (
     <div
-      className={`${albert.className}  min-h-screen flex justify-center bg-gradient-to-b from-blue-900 to-black text-white`}
+      className={`${albert.className} flex justify-center bg-gradient-to-t from-black to-gray-900  backdrop-blur-xl text-slate-200`}
     >
-      <div className="mt-32 w-full p-12">
-        <div className="flex flex-col gap-12">
-          <div className="font-semibold text-4xl text-left">
+      <div className="w-full">
+        <div className="flex flex-col text-slate-200 p-10 md:p-32 justify-between gap-10">
+          <div className="font-semibold text-5xl md:text-5xl">
             Latest Projects
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
