@@ -4,7 +4,7 @@ import { poppins } from "@/styles/fonts";
 
 const Footer = () => {
   return (
-    <div className="bg-black/20">
+    <div className="bg-black backdrop-blur-lg">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3"></div>

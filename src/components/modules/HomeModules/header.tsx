@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { poppins } from "@/styles/fonts";
+import { motion } from "framer-motion";
+import { AuroraBackground } from "@/components/ui/aurora-bg";
 
 export default function Header() {
   const title = "SOFTWARE ENGINEER";
@@ -40,45 +42,44 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="text-slate-200 bg-gradient-to-tr from-gray-900 to-black p-5 min-h-screen flex justify-center items-center">
-      <div className="flex flex-col w-full h-full overflow-hidden gap-8 md:gap-2">
-        <div
-          className={`select-none flex gap-1 md:gap-2 font-bold text-[50px] md:text-[80px] lg:text-[110px] text-gray-500 ${poppins.className}`}
-          style={{ transform: `translateX(${offsetTitle}px)` }}
-          ref={titleRef}
-        >
-          {characters.map((char, index) => (
-            <span key={index} className="hover:text-slate-200">
-              {char === " " ? "\u00A0" : char}
-            </span>
-          ))}
+    <AuroraBackground>
+      <motion.div
+        initial={{ opacity: 0.0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.3,
+          duration: 0.8,
+          ease: "easeInOut",
+        }}
+      >
+        <div className="text-gray-200 mix-blend-color-dodge p-5 min-h-screen flex justify-center items-center">
+          <div className="flex flex-col w-full h-full overflow-hidden gap-8 md:gap-2">
+            <div
+              className={`select-none flex gap-1 md:gap-2 font-bold text-[50px] md:text-[80px] lg:text-[110px] ${poppins.className}`}
+              style={{ transform: `translateX(${offsetTitle}px)` }}
+              ref={titleRef}
+            >
+              {characters.map((char, index) => (
+                <span key={index} className="hover:text-purple-500">
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </div>
+            <div className="m-10"></div>
+            <div
+              className={`select-none flex gap-1 md:gap-2 font-bold text-[40px] md:text-[70px] lg:text-[100px] ${poppins.className}`}
+              style={{ transform: `translateX(${offsetName}px)` }}
+              ref={nameRef}
+            >
+              {name.split("").map((char, index) => (
+                <span key={index} className="hover:text-cyan-300">
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
-
-        <hr
-          className="w-1/2 border-t border-transparent bg-gradient-to-r from-gray-900 to-purple-500 self-end mt-5 mb-5 rounded-l-md"
-          style={{ height: "4px" }}
-        ></hr>
-
-        <div
-          className={`select-none flex gap-1 md:gap-2 font-bold text-[40px] md:text-[70px] lg:text-[100px] text-gray-500 ${poppins.className}`}
-          style={{ transform: `translateX(${offsetName}px)` }}
-          ref={nameRef}
-        >
-          {name.split("").map((char, index) => (
-            <span key={index} className="hover:text-purple-500">
-              {char === " " ? "\u00A0" : char}
-            </span>
-          ))}
-        </div>
-        <hr
-          className="w-1/2 border-t border-transparent bg-gradient-to-r from-orange-500 to-gray-900 self-right mt-5 mb-5 rounded-l-md"
-          style={{ height: "4px" }}
-        ></hr>
-        {/* <hr
-          className="w-1/2 border-t border-transparent bg-gradient-to-r from-black to-orange-500 self-end mt-5 mb-5 rounded-l-md"
-          style={{ height: "4px" }}
-        ></hr> */}
-      </div>
-    </div>
+      </motion.div>
+    </AuroraBackground>
   );
 }
