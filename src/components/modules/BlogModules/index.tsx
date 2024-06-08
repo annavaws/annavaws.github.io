@@ -45,7 +45,7 @@ const BlogPosts: React.FC = () => {
 
   return (
     <div
-      className={`${albert.className} blog-container bg-black text-white galaxy-background`}
+      className={`${albert.className} blog-container bg-black text-slate-200 galaxy-background`}
     >
       <div className="font-semibold text-4xl text-center md:ml-10 md:text-left p-8 pt-32 md:pt-40 mb-10">
         My Blog

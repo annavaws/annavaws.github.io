@@ -20,7 +20,7 @@ export default function AboutMore() {
               className="rounded-full shadow-lg"
             />
           </div>
-          <div className="lg:w-1/2 flex flex-col items-center text-white">
+          <div className="lg:w-1/2 flex flex-col items-center text-slate-200">
             <h1 className="font-bold text-4xl md:text-6xl text-center mb-5">
               About Me
             </h1>
@@ -47,7 +47,7 @@ export default function AboutMore() {
             </p>
           </div>
         </div>
-        <div className="mt-14 flex justify-end  text-white text-opacity-80 text-sm md:text-base hover:underline animate-bounce ">
+        <div className="mt-14 flex justify-end  text-slate-200 text-opacity-80 text-sm md:text-base hover:underline animate-bounce ">
           {" "}
           <Link href="/project" className="flex  whitespace-nowrap  space-x-2 ">
             <span>Discover more about my projects here</span>

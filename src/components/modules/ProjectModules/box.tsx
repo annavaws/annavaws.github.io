@@ -88,7 +88,7 @@ export default function Box() {
 
   return (
     <div
-      className={`${albert.className}  min-h-screen flex justify-center bg-gradient-to-b from-blue-900 to-black text-white`}
+      className={`${albert.className}  min-h-screen flex justify-center bg-gradient-to-b from-blue-900 to-black text-slate-200`}
     >
       <div className="mt-32 w-full p-12 md:px-24 lg:p-12">
         <div className="flex flex-col gap-12">
@@ -124,7 +124,7 @@ export default function Box() {
                       <div className="text-md italic font-bold flex flex-wrap gap-2">
                         {project.techStack.map((tech) => (
                           <Button2
-                            className="cursor-default hover:text-purple-300 hover:border-purple-300 px-6 py-2 bg-transparent text-white border-white border rounded-full"
+                            className="cursor-default hover:text-purple-300 hover:border-purple-300 px-6 py-2 bg-transparent text-slate-200 border-white border rounded-full"
                             key={tech}
                           >
                             {tech}

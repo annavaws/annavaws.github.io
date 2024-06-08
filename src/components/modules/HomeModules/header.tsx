@@ -40,7 +40,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="text-white  bg-gradient-to-tr from-gray-900 to-black p-5 min-h-screen flex justify-center items-center">
+    <div className="text-slate-200 bg-gradient-to-tr from-gray-900 to-black p-5 min-h-screen flex justify-center items-center">
       <div className="flex flex-col w-full h-full overflow-hidden gap-8 md:gap-2">
         <div
           className={`select-none flex gap-1 md:gap-2 font-bold text-[50px] md:text-[80px] lg:text-[110px] text-gray-500 ${poppins.className}`}

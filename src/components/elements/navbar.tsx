@@ -26,7 +26,7 @@ const Navbar = () => {
     <nav
       className={`${
         poppins.className
-      } backdrop-blur-xl fixed top-0 left-0 right-0 z-50 w-full h-[10vh] flex flex-row justify-between items-center px-10 text-white ${
+      } backdrop-blur-xl fixed top-0 left-0 right-0 z-50 w-full h-[10vh] flex flex-row justify-between items-center px-10 text-slate-200 ${
         hasScrolled ? "border-b border-gray-400" : ""
       }`}
     >
@@ -45,7 +45,7 @@ const Navbar = () => {
       >
         <Link href="/about">
           <span
-            className="text-white text-lg hover:text-orange-500 hover:underline hover:underline-offset-4"
+            className="text-slate-200 text-lg hover:text-orange-500 hover:underline hover:underline-offset-4"
             onClick={() => setIsOpen(false)}
           >
             About
@@ -53,7 +53,7 @@ const Navbar = () => {
         </Link>
         <Link href="/project">
           <span
-            className="text-white text-lg hover:text-orange-500 hover:underline hover:underline-offset-4"
+            className="text-slate-200 text-lg hover:text-orange-500 hover:underline hover:underline-offset-4"
             onClick={() => setIsOpen(false)}
           >
             Projects
@@ -61,7 +61,7 @@ const Navbar = () => {
         </Link>
         <Link href="/blog">
           <span
-            className="text-white text-lg hover:text-orange-500 hover:underline hover:underline-offset-4"
+            className="text-slate-200 text-lg hover:text-orange-500 hover:underline hover:underline-offset-4"
             onClick={() => setIsOpen(false)}
           >
             Blog
