@@ -23,7 +23,7 @@ export default function Latest() {
       title: "vlecture",
       description:
         "A notetaking companion app for students to upload the audio of their lectures and create personalized notes, flashcards, and quizzes based on the audio transcription.",
-      techStack: ["React", "TailwindCSS"],
+      techStack: ["FastAPI", "NextJS", "MongoDB", "Supabase", "Railway"],
       live: "https://vlecture.tech/",
       repo: "https://github.com/vlecture/vlecture-api",
     },
@@ -34,8 +34,8 @@ export default function Latest() {
       description:
         "A project for the Information Retrieval class utlizing TF-IDF for indexing and uses medical datasets from ir-datasets",
       techStack: ["Python", "Django", "Tailwind", "GCP"],
-      live: "",
-      repo: "",
+      live: "http://nubengine.annavaws.com",
+      repo: "https://github.com/daffafaizan/nubengine",
     },
     {
       id: 3,
@@ -53,6 +53,16 @@ export default function Latest() {
       ],
       live: "http://rpl-a12.et.r.appspot.com/",
       repo: "https://github.com/daffafaizan/invite-app",
+    },
+    {
+      id: 4,
+      image: "/portfolio.png",
+      title: "Portfolio",
+      description:
+        "My portfolio website featuring finished projects, technologies, blogs, and socials.",
+      techStack: ["NextJS", "TypeScript", "Tailwind", "Netlify"],
+      live: "https://annavaws.com",
+      repo: "https://github.com/annavaws/my-portfolio",
     },
   ];
 
