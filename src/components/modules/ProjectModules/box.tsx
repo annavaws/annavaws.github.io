@@ -90,7 +90,7 @@ export default function Box() {
     <div
       className={`${albert.className}  min-h-screen flex justify-center bg-gradient-to-b from-blue-900 to-black text-white`}
     >
-      <div className="mt-32 w-full p-12">
+      <div className="mt-32 w-full p-12 md:px-24 lg:p-12">
         <div className="flex flex-col gap-12">
           <div className="font-semibold text-4xl text-left">My Projects</div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -103,7 +103,7 @@ export default function Box() {
               >
                 <div
                   key={project.id}
-                  className={`group relative w-full h-[430px] md:h-[400px] lg:h-[340px] border hover:border-gray-100 border-gray-500 rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
+                  className={`group relative w-full h-[330px] md:h-[450px] lg:h-[340px] border hover:border-gray-100 border-gray-500 rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
                 >
                   <Image
                     src={project.image}
@@ -118,7 +118,9 @@ export default function Box() {
                       <div className="text-xl font-bold mb-2">
                         {project.title}
                       </div>
-                      <div className="mb-2">{project.description}</div>
+                      <div className="mb-2 hidden md:block">
+                        {project.description}
+                      </div>
                       <div className="text-md italic font-bold flex flex-wrap gap-2">
                         {project.techStack.map((tech) => (
                           <Button2
