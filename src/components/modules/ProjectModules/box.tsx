@@ -134,7 +134,7 @@ export default function Box() {
                           <a
                             href={project.live}
                             target="_blank"
-                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2"
+                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2 hover:text-orange-500 hover:scale-105"
                           >
                             <svg
                               viewBox="0 0 24 24"
@@ -165,11 +165,11 @@ export default function Box() {
                           </a>
                         </div>
 
-                        <div className="w-1/2">
+                        <div className="w-1/2 hover:text-orange-500 hover:scale-105">
                           <a
                             href={project.repo}
                             target="_blank"
-                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2 "
+                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2"
                           >
                             <svg
                               viewBox="0 0 24 24"
@@ -196,6 +196,7 @@ export default function Box() {
                                 ></path>{" "}
                               </g>
                             </svg>
+
                             <div>Repo</div>
                           </a>
                         </div>
