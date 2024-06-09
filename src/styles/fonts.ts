@@ -1,4 +1,4 @@
-import { Inter, Lora } from "next/font/google";
+import { Inter, Lora, Anton, Rowdies } from "next/font/google";
 import { Albert_Sans, Poppins } from "next/font/google";
 
 // define your variable fonts
@@ -20,4 +20,14 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400"],
 });
-export { inter, lora, albert, poppins };
+
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+});
+const rowdies = Rowdies({
+  subsets: ["latin"],
+  weight: "400",
+});
+
+export { inter, lora, albert, poppins, anton, rowdies };

@@ -1,4 +1,3 @@
-"use client";
 import { cn } from "@/utils/cn";
 import React, { ReactNode } from "react";
 
@@ -17,7 +16,7 @@ export const AuroraBackground = ({
     <main>
       <div
         className={cn(
-          "relative flex flex-col h-[100vh] items-center justify-center bg-black/40 text-slate-950 transition-bg",
+          "relative flex overflow-hidden flex-col h-[100vh] items-center justify-center bg-black/40 text-slate-950 transition-bg",
           className
         )}
         {...props}
@@ -40,7 +39,6 @@ export const AuroraBackground = ({
             after:animate-aurora after:[background-attachment:fixed] after:mix-blend-difference
             pointer-events-none
             absolute -inset-[10px] opacity-50 will-change-transform`,
-
               showRadialGradient &&
                 `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
             )}
@@ -50,4 +48,7 @@ export const AuroraBackground = ({
       </div>
     </main>
   );
-};
+  };
+  
+
+  // [mask-image:radial-gradient(ellipse at 100% 0%,black 10%,var(--transparent) 70%)]`
