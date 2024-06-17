@@ -116,8 +116,8 @@ export default function AboutMore() {
               <div className="relative lg:sticky  lg:top-40 w-[300px] h-[300px] lg:w-[400px] lg:h-[400px]">
                 <Image
                   src="/me.jpg"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: "cover" }}
                   alt="Annava"
                   className="rounded-full shadow-lg"
                 />
@@ -126,26 +126,52 @@ export default function AboutMore() {
                 <h1 className="font-bold text-2xl md:text-4xl lg:text-6xl text-center mb-5">
                   About Me
                 </h1>
-                <p className="text-md md:text-lg lg:text-xl text-justify text-gray-300">
-                  <b>Annava</b>, a third-year Computer Science student at the
-                  University of Indonesia, is deeply passionate about{" "}
-                  <b>Software Engineering</b>. She’s dedicated to expanding her
-                  expertise, actively engaging in learning and applying her
-                  skills in both Front End and Back End Development. She is
-                  proficient in programming languages such as Python, Java,
-                  JavaScript, TypeScript, HTML, and CSS. Annava leverages
-                  PostgreSQL for robust database solutions.
-                </p>
+                <div className="text-md md:text-lg lg:text-xl text-justify text-gray-300 font-thin">
+                  <span className="text-white font-semibold">Annava</span>, a
+                  third-year{" "}
+                  <span className="text-white font-semibold">
+                    Computer Science
+                  </span>{" "}
+                  student at the{" "}
+                  <span className="text-white font-semibold">
+                    University of Indonesia
+                  </span>
+                  , is deeply passionate about{" "}
+                  <span className="text-white font-semibold">
+                    Software Engineering
+                  </span>
+                  . She&apos;s dedicated to expanding her expertise, actively
+                  engaging in learning and applying her skills in both{" "}
+                  <span className="text-white font-semibold">
+                    Front End and Back End Development
+                  </span>
+                  . She is proficient in programming languages such as{" "}
+                  <span className="text-white font-semibold">
+                    Python, Java, JavaScript, TypeScript, HTML, and CSS
+                  </span>
+                  . Annava leverages{" "}
+                  <span className="text-white font-semibold">PostgreSQL</span>{" "}
+                  for robust database solutions.
+                </div>
                 <p className="text-lg md:text-xl text-justify mt-5 text-gray-300">
                   Her enthusiasm for software engineering is evident in her
-                  mastery of diverse frameworks including Django, Flutter,
-                  Spring Boot, ReactJS, Bootstrap, and Laravel. This enables her
-                  to deliver responsive, aesthetically appealing applications.
-                  Committed to continual learning, Annava eagerly explores
-                  cutting-edge technologies, aiming to make a meaningful impact
-                  in the software engineering field. Whether it’s crafting
-                  elegant user interfaces or optimizing server-side logic,
-                  Annava’s dedication and curiosity drive her forward.
+                  mastery of diverse frameworks including{" "}
+                  <span className="text-white font-semibold">
+                    {" "}
+                    Django, FastAPI, Flutter, SpringBoot, NextJS, Bootstrap,
+                    Tailwind and Laravel
+                  </span>
+                  . This enables her to deliver{" "}
+                  <span className="text-white font-semibold">
+                    {" "}
+                    responsive, aesthetically appealing
+                  </span>{" "}
+                  applications. Committed to continual learning, Annava eagerly
+                  explores cutting-edge technologies, aiming to make a
+                  meaningful impact in the software engineering field. Whether
+                  it’s crafting elegant user interfaces or optimizing
+                  server-side logic, Annava’s dedication and curiosity drive her
+                  forward.
                 </p>
               </div>
             </div>
@@ -167,8 +193,8 @@ export default function AboutMore() {
             <div className="relative w-[300px] h-[300px]">
               <Image
                 src="/me.jpg"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 alt="Annava"
                 className="rounded-full shadow-lg"
               />

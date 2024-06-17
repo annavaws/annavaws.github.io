@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { poppins } from "@/styles/fonts";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // State to handle menu toggle
   const [hasScrolled, setHasScrolled] = useState(false); // State to handle scroll
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +24,13 @@ const Navbar = () => {
     };
   }, []);
 
+  const links = [
+    { href: "/", label: "" },
+    { href: "/about", label: "About" },
+    { href: "/project", label: "Projects" },
+    { href: "/blog", label: "Blog" },
+  ];
+
   return (
     <nav
       className={`${
@@ -31,7 +40,11 @@ const Navbar = () => {
       }`}
     >
       <Link href="/">
-        <span className="w-[140px] text-lg hover:text-orange-500 hover:underline hover:underline-offset-4">
+        <span
+          className={`w-[140px] text-lg hover:text-orange-800 hover:underline hover:underline-offset-8 ${
+            router.pathname === "/" ? "text-orange-500" : ""
+          }`}
+        >
           nav
         </span>
       </Link>
@@ -43,30 +56,23 @@ const Navbar = () => {
           isOpen ? "flex justify-end" : "hidden"
         } flex-col md:flex-row items-center gap-16 px-10 py-5 md:p-0  bg-black/80 backdrop-blur-xl`}
       >
-        <Link href="/about">
-          <span
-            className="text-slate-200 text-lg hover:text-orange-500 hover:underline hover:underline-offset-4"
-            onClick={() => setIsOpen(false)}
-          >
-            About
-          </span>
-        </Link>
-        <Link href="/project">
-          <span
-            className="text-slate-200 text-lg hover:text-orange-500 hover:underline hover:underline-offset-4"
-            onClick={() => setIsOpen(false)}
-          >
-            Projects
-          </span>
-        </Link>
-        <Link href="/blog">
-          <span
-            className="text-slate-200 text-lg hover:text-orange-500 hover:underline hover:underline-offset-4"
-            onClick={() => setIsOpen(false)}
-          >
-            Blog
-          </span>
-        </Link>
+        {links.map(({ href, label }) => (
+          <Link href={href} key={href} passHref>
+            <span
+              className={`text-lg hover:text-orange-800 hover:underline hover:underline-offset-8 ${
+                router.pathname === href ? "text-orange-500" : ""
+              }`}
+              onClick={(e) => {
+                setIsOpen(false);
+                if (router.pathname === href) {
+                  e.preventDefault();
+                }
+              }}
+            >
+              {label}
+            </span>
+          </Link>
+        ))}
       </div>
     </nav>
   );

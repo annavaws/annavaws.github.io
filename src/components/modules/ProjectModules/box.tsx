@@ -89,8 +89,15 @@ export default function Box() {
 
   return (
     <div
-      className={`${albert.className}  min-h-screen flex justify-center bg-gradient-to-b from-blue-900 to-black text-slate-200`}
+      className={`${albert.className}  min-h-screen flex justify-center galaxy-background-2 text-slate-200 z-10`}
     >
+      <div
+        className="noise-overlay"
+        style={{
+          backgroundImage: "url(/noise.webp)",
+          backgroundSize: "10%",
+        }}
+      ></div>
       <div className="w-full mt-32 md:px-24 lg:p-12 md:ml-10 p-8 pt-32 md:pt-40 mb-10">
         <div className="flex flex-col gap-12">
           <div className="font-semibold text-4xl text-center md:text-left">
@@ -114,6 +121,7 @@ export default function Box() {
                     objectFit="cover"
                     className="rounded-xl"
                     alt={project.title}
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 flex-col bg-black bg-opacity-60 rounded-xl flex items-center justify-center p-5 opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-md transition duration-300 ease-in-out">
                     {/* <div className="absolute inset-0 object-cover object-center xl:object-bottom opacity-0 group-hover:opacity-100 transition-opacity"> */}
