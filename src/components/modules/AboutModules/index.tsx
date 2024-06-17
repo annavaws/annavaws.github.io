@@ -116,8 +116,8 @@ export default function AboutMore() {
               <div className="relative lg:sticky  lg:top-40 w-[300px] h-[300px] lg:w-[400px] lg:h-[400px]">
                 <Image
                   src="/me.jpg"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: "cover" }}
                   alt="Annava"
                   className="rounded-full shadow-lg"
                 />
@@ -167,8 +167,8 @@ export default function AboutMore() {
             <div className="relative w-[300px] h-[300px]">
               <Image
                 src="/me.jpg"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 alt="Annava"
                 className="rounded-full shadow-lg"
               />

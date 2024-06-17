@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { albert, poppins } from "@/styles/fonts";
 import { Skeleton } from "@/components/ui/skeleton";
-
+import blogData from "@/components/modules/BlogModules/data.json";
 interface BlogPost {
   title: string;
   link: string;
@@ -21,10 +21,8 @@ const BlogPosts: React.FC = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(
-          "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@annavaws"
-        );
-        const data: BlogApiResponse = await response.json();
+        // Simulating fetch with local data
+        const data: BlogApiResponse = blogData;
         if (data.status === "ok") {
           console.log(data);
           setPosts(data.items);
@@ -52,9 +50,9 @@ const BlogPosts: React.FC = () => {
       </div>
       {loading ? (
         <div className="flex flex-col justify-center items-center mx-3 px-12">
-          <Skeleton className="w-full p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
-          <Skeleton className="w-full p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
-          <Skeleton className="w-full p-20 rounded-xl shadow-lg shadow-gray-800 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
+          <Skeleton className="w-full md:w-2/3 p-24 rounded-xl border border-gray-500 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
+          <Skeleton className="w-full md:w-2/3 p-24 rounded-xl border border-gray-500 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
+          <Skeleton className="w-full md:w-2/3 p-24 rounded-xl border border-gray-500 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
         </div>
       ) : (
         <div className="posts-list">
