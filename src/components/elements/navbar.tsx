@@ -41,7 +41,7 @@ const Navbar = () => {
     >
       <Link href="/">
         <span
-          className={`w-[140px] text-lg hover:text-orange-500 hover:underline hover:underline-offset-8 ${
+          className={`w-[140px] text-lg hover:text-orange-800 hover:underline hover:underline-offset-8 ${
             router.pathname === "/" ? "text-orange-500" : ""
           }`}
         >
@@ -59,7 +59,7 @@ const Navbar = () => {
         {links.map(({ href, label }) => (
           <Link href={href} key={href} passHref>
             <span
-              className={`text-slate-200 text-lg hover:text-orange-800 hover:underline hover:underline-offset-8 ${
+              className={`text-lg hover:text-orange-800 hover:underline hover:underline-offset-8 ${
                 router.pathname === href ? "text-orange-500" : ""
               }`}
               onClick={(e) => {
