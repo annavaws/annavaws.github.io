@@ -47,3 +47,7 @@ body {
   background-blend-mode: screen, multiply, normal;
   background-repeat: no-repeat;
 }
+
+*::-webkit-scrollbar {
+  width: 0px;
+}
