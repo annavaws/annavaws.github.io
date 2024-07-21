@@ -1,7 +1,6 @@
 import { albert } from "@/styles/fonts";
 import Image from "next/image";
 import React from "react";
-import { Button2 } from "@/components/ui/button";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
@@ -60,15 +59,15 @@ export default function Latest() {
   return (
     <div className="p-10 md:p-32 bg-gradient-to-t from-black to-gray-900">
       <div
-        className={`${albert.className} flex justify-center  flex-col backdrop-blur-xl text-slate-200`}
+        className={`${albert.className} flex justify-center flex-col backdrop-blur-xl text-slate-200`}
       >
         <div className="flex w-full font-semibold text-5xl md:text-5xl">
           Latest Projects
         </div>
-        <div className="flex  text-slate-200">
-          <div className="grid grid-cols-2 gap-20">
+        <div className="flex text-slate-200 justify-around">
+          <div className="grid grid-cols-2">
             {projects.map((project) => (
-              <CardContainer key={project.id} className="inter-var">
+              <CardContainer key={project.id} className="inter-var px-10">
                 <CardBody className="relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
                   <CardItem className="text-xl font-bold">
                     {project.title}
@@ -92,24 +91,24 @@ export default function Latest() {
                     {project.techStack.map((tech, index) => (
                       <CardItem
                         key={index}
-                        className="bg-transparent border border-white text-white rounded-full px-3 py-1 text-xs"
+                        className="bg-transparent border border-white text-white rounded-full px-4 py-2 text-xs"
                       >
                         {tech}
                       </CardItem>
                     ))}
                   </div>
-                  <div className="flex justify-between items-center mt-20">
+                  <div className="flex justify-between items-center mt-10">
                     <CardItem
                       as="a"
                       href={project.live}
-                      className="px-4 py-2 rounded-xl text-xs font-normal"
+                      className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-normal font-bold hover:bg-slate-500"
                     >
                       Live
                     </CardItem>
                     <CardItem
                       as="a"
                       href={project.repo}
-                      className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                      className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-normal font-bold hover:bg-slate-500"
                     >
                       Repo
                     </CardItem>
@@ -120,7 +119,7 @@ export default function Latest() {
           </div>
         </div>
       </div>
-      <div className="mt-14 flex justify-end text-slate-200 text-opacity-80 text-sm md:text-base hover:underline animate-bounce">
+      <div className="mt-2 flex justify-end text-slate-200 text-opacity-80 text-sm md:text-base hover:underline animate-bounce">
         <Link href="/project" className="flex whitespace-nowrap space-x-2">
           <span>Discover more about my projects here</span>
           <FaArrowRight className="w-5 h-5" />
