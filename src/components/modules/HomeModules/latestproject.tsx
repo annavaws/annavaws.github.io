@@ -17,18 +17,9 @@ export default function Latest() {
       live: "https://vlecture.tech/",
       repo: "https://github.com/vlecture/vlecture-api",
     },
+
     {
       id: 2,
-      image: "/nubengine.png",
-      title: "Nubengine",
-      description:
-        "A project for the Information Retrieval class utlizing TF-IDF for indexing and uses medical datasets from ir-datasets",
-      techStack: ["Python", "Django", "Tailwind", "GCP"],
-      live: "http://nubengine.annavaws.com",
-      repo: "https://github.com/daffafaizan/nubengine",
-    },
-    {
-      id: 3,
       image: "/invite.png",
       title: "Invite",
       description:
@@ -45,7 +36,7 @@ export default function Latest() {
       repo: "https://github.com/daffafaizan/invite-app",
     },
     {
-      id: 4,
+      id: 3,
       image: "/portfolio.png",
       title: "Portfolio",
       description:
@@ -54,68 +45,85 @@ export default function Latest() {
       live: "https://annavaws.com",
       repo: "https://github.com/annavaws/my-portfolio",
     },
+    {
+      id: 4,
+      image: "/nubengine.png",
+      title: "Nubengine",
+      description:
+        "A project for the Information Retrieval class utlizing TF-IDF for indexing and uses medical datasets from ir-datasets",
+      techStack: ["Python", "Django", "Tailwind", "GCP"],
+      live: "http://nubengine.annavaws.com",
+      repo: "https://github.com/daffafaizan/nubengine",
+    },
   ];
 
   return (
-    <div className="p-10 md:p-32 bg-gradient-to-t from-black to-gray-900">
+    <div className="p-10 md:p-12 lg:p-20 bg-gradient-to-t from-black to-gray-900">
       <div
         className={`${albert.className} flex justify-center flex-col backdrop-blur-xl text-slate-200`}
       >
         <div className="flex w-full font-semibold text-5xl md:text-5xl">
           Latest Projects
         </div>
-        <div className="flex text-slate-200 justify-around">
-          <div className="grid grid-cols-2">
-            {projects.map((project) => (
-              <CardContainer key={project.id} className="inter-var px-10">
-                <CardBody className="relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
-                  <CardItem className="text-xl font-bold">
-                    {project.title}
-                  </CardItem>
-                  <CardItem
-                    as="p"
-                    className="text-sm max-w-sm mt-2 text-neutral-300"
-                  >
-                    {project.description}
-                  </CardItem>
-                  <CardItem className="w-full mt-4">
-                    <Image
-                      src={project.image}
-                      height="1000"
-                      width="1000"
-                      className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                      alt={project.title}
-                    />
-                  </CardItem>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {project.techStack.map((tech, index) => (
+        <div className="flex text-slate-200">
+          <div className="mt-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-12">
+              {projects.map((project) => (
+                <CardContainer
+                  key={project.id}
+                  className="inter-var px-10 -mt-20"
+                >
+                  <CardBody className="relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+                    <CardItem className="text-xl font-bold">
+                      {project.title}
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      className="text-sm max-w-sm mt-2 text-neutral-300"
+                    >
+                      {project.description}
+                    </CardItem>
+                    <CardItem className="w-full mt-4">
+                      <Image
+                        src={project.image}
+                        height="1000"
+                        width="1000"
+                        className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                        alt={project.title}
+                      />
+                    </CardItem>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {project.techStack.map((tech, index) => (
+                        <CardItem
+                          key={index}
+                          className="bg-transparent border border-white text-white rounded-full px-4 py-2 text-xs"
+                        >
+                          {tech}
+                        </CardItem>
+                      ))}
+                    </div>
+                    <div className="flex justify-between items-center mt-10">
                       <CardItem
-                        key={index}
-                        className="bg-transparent border border-white text-white rounded-full px-4 py-2 text-xs"
+                        as="a"
+                        target="_blank"
+                        href={project.live}
+                        className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-normal font-bold hover:bg-slate-500"
                       >
-                        {tech}
+                        Live
                       </CardItem>
-                    ))}
-                  </div>
-                  <div className="flex justify-between items-center mt-10">
-                    <CardItem
-                      as="a"
-                      href={project.live}
-                      className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-normal font-bold hover:bg-slate-500"
-                    >
-                      Live
-                    </CardItem>
-                    <CardItem
-                      as="a"
-                      href={project.repo}
-                      className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-normal font-bold hover:bg-slate-500"
-                    >
-                      Repo
-                    </CardItem>
-                  </div>
-                </CardBody>
-              </CardContainer>
-            ))}
+                      <CardItem
+                        as="a"
+                        target="_blank"
+                        href={project.repo}
+                        className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-normal font-bold hover:bg-slate-500"
+                      >
+                        Repo
+                      </CardItem>
+                    </div>
+                  </CardBody>
+                </CardContainer>
+              ))}
+            </div>
           </div>
         </div>
       </div>
