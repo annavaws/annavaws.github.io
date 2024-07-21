@@ -1,19 +1,9 @@
 import { albert } from "@/styles/fonts";
 import Image from "next/image";
 import React from "react";
-import { motion } from "framer-motion";
-import { Button2 } from "@/components/ui/button";
-const container = {
-  hidden: { opacity: 1, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delayChildren: 0.5,
-      staggerChildren: 0.8,
-    },
-  },
-};
+import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 export default function Latest() {
   const projects = [
@@ -27,18 +17,9 @@ export default function Latest() {
       live: "https://vlecture.tech/",
       repo: "https://github.com/vlecture/vlecture-api",
     },
+
     {
       id: 2,
-      image: "/nubengine.png",
-      title: "Nubengine",
-      description:
-        "A project for the Information Retrieval class utlizing TF-IDF for indexing and uses medical datasets from ir-datasets",
-      techStack: ["Python", "Django", "Tailwind", "GCP"],
-      live: "http://nubengine.annavaws.com",
-      repo: "https://github.com/daffafaizan/nubengine",
-    },
-    {
-      id: 3,
       image: "/invite.png",
       title: "Invite",
       description:
@@ -55,7 +36,7 @@ export default function Latest() {
       repo: "https://github.com/daffafaizan/invite-app",
     },
     {
-      id: 4,
+      id: 3,
       image: "/portfolio.png",
       title: "Portfolio",
       description:
@@ -64,129 +45,91 @@ export default function Latest() {
       live: "https://annavaws.com",
       repo: "https://github.com/annavaws/my-portfolio",
     },
+    {
+      id: 4,
+      image: "/nubengine.png",
+      title: "Nubengine",
+      description:
+        "A project for the Information Retrieval class utlizing TF-IDF for indexing and uses medical datasets from ir-datasets",
+      techStack: ["Python", "Django", "Tailwind", "GCP"],
+      live: "http://nubengine.annavaws.com",
+      repo: "https://github.com/daffafaizan/nubengine",
+    },
   ];
 
   return (
-    <div
-      className={`${albert.className} flex justify-center bg-gradient-to-t from-black to-gray-900  backdrop-blur-xl text-slate-200`}
-    >
-      <div className="w-full">
-        <div className="flex flex-col text-slate-200 p-10 md:p-32 justify-between gap-10">
-          <div className="font-semibold text-5xl md:text-5xl">
-            Latest Projects
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div className="p-10 lg:p-20 bg-gradient-to-t from-black to-gray-900">
+      <div
+        className={`${albert.className} flex justify-center w-full flex-col backdrop-blur-xl text-slate-200`}
+      >
+        <div className="px-16 flex w-full font-semibold text-5xl md:text-5xl mb-10">
+          Latest Projects
+        </div>
+        <div className="px-0 lg:px-12 flex text-slate-200">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-12">
             {projects.map((project) => (
-              <motion.ul
-                variants={container}
-                initial="hidden"
-                animate="visible"
+              <CardContainer
                 key={project.id}
+                className="inter-var px-10 -mt-20"
               >
-                <div
-                  key={project.id}
-                  className={`group relative w-full h-[430px] md:h-[400px] lg:h-[330px] border hover:border-gray-100 border-gray-500 rounded-xl shadow-md shadow-black transition duration-500 ease-in-out transform hover:-translate-y-2`}
-                >
-                  <Image
-                    src={project.image}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-xl"
-                    alt={project.title}
-                  />
-                  <div className="absolute inset-0 flex-col bg-black bg-opacity-60 rounded-xl flex items-center justify-center p-5 opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-md transition duration-300 ease-in-out">
-                    {/* <div className="absolute inset-0 object-cover object-center xl:object-bottom opacity-0 group-hover:opacity-100 transition-opacity"> */}
-                    <div className="text-justify h-full mx-10 p-3 md:p-8 flex flex-col w-full justify-between">
-                      <div className="text-xl font-bold mb-2">
-                        {project.title}
-                      </div>
-                      <div className="mb-2">{project.description}</div>
-                      <div className="text-md italic font-bold flex flex-wrap gap-2">
-                        {project.techStack.map((tech) => (
-                          <Button2
-                            className="cursor-default hover:text-purple-300 hover:border-purple-300 px-6 py-2 bg-transparent text-white border-white border rounded-full"
-                            key={tech}
-                          >
-                            {tech}
-                          </Button2>
-                        ))}
-                      </div>
-                      <div className="flex flex-row justify-between w-full mt-2">
-                        <div className="w-1/2">
-                          <a
-                            href={project.live}
-                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2"
-                          >
-                            <svg
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="w-6 h-6"
-                            >
-                              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                              <g
-                                id="SVGRepo_tracerCarrier"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              ></g>
-                              <g id="SVGRepo_iconCarrier">
-                                {" "}
-                                <path
-                                  d="M15.7281 3.88396C17.1624 2.44407 19.2604 2.41383 20.4219 3.57981C21.5856 4.74798 21.5542 6.85922 20.1189 8.30009L17.6951 10.7333C17.4028 11.0268 17.4037 11.5017 17.6971 11.794C17.9906 12.0863 18.4655 12.0854 18.7578 11.7919L21.1816 9.35869C23.0929 7.43998 23.3329 4.37665 21.4846 2.5212C19.6342 0.663551 16.5776 0.905664 14.6653 2.82536L9.81768 7.69182C7.90639 9.61053 7.66643 12.6739 9.5147 14.5293C9.80702 14.8228 10.2819 14.8237 10.5754 14.5314C10.8688 14.2391 10.8697 13.7642 10.5774 13.4707C9.41376 12.3026 9.4451 10.1913 10.8804 8.75042L15.7281 3.88396Z"
-                                  fill="#ffffff"
-                                ></path>{" "}
-                                <path
-                                  opacity="0.5"
-                                  d="M14.4846 9.4707C14.1923 9.17724 13.7174 9.17632 13.4239 9.46864C13.1305 9.76097 13.1296 10.2358 13.4219 10.5293C14.5856 11.6975 14.5542 13.8087 13.1189 15.2496L8.27129 20.1161C6.83696 21.556 4.73889 21.5862 3.57742 20.4202C2.41376 19.2521 2.4451 17.1408 3.8804 15.6999L6.30424 13.2666C6.59657 12.9732 6.59565 12.4983 6.30219 12.206C6.00873 11.9137 5.53386 11.9146 5.24153 12.208L2.81769 14.6413C0.906387 16.56 0.666428 19.6234 2.5147 21.4788C4.36518 23.3365 7.42173 23.0944 9.334 21.1747L14.1816 16.3082C16.0929 14.3895 16.3329 11.3262 14.4846 9.4707Z"
-                                  fill="#ffffff"
-                                ></path>{" "}
-                              </g>
-                            </svg>
-                            <div>Live</div>
-                          </a>
-                        </div>
-
-                        <div className="w-1/2">
-                          <a
-                            href={project.repo}
-                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2 "
-                          >
-                            <svg
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="w-6 h-6"
-                            >
-                              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                              <g
-                                id="SVGRepo_tracerCarrier"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              ></g>
-                              <g id="SVGRepo_iconCarrier">
-                                {" "}
-                                <path
-                                  d="M15.7281 3.88396C17.1624 2.44407 19.2604 2.41383 20.4219 3.57981C21.5856 4.74798 21.5542 6.85922 20.1189 8.30009L17.6951 10.7333C17.4028 11.0268 17.4037 11.5017 17.6971 11.794C17.9906 12.0863 18.4655 12.0854 18.7578 11.7919L21.1816 9.35869C23.0929 7.43998 23.3329 4.37665 21.4846 2.5212C19.6342 0.663551 16.5776 0.905664 14.6653 2.82536L9.81768 7.69182C7.90639 9.61053 7.66643 12.6739 9.5147 14.5293C9.80702 14.8228 10.2819 14.8237 10.5754 14.5314C10.8688 14.2391 10.8697 13.7642 10.5774 13.4707C9.41376 12.3026 9.4451 10.1913 10.8804 8.75042L15.7281 3.88396Z"
-                                  fill="#ffffff"
-                                ></path>{" "}
-                                <path
-                                  opacity="0.5"
-                                  d="M14.4846 9.4707C14.1923 9.17724 13.7174 9.17632 13.4239 9.46864C13.1305 9.76097 13.1296 10.2358 13.4219 10.5293C14.5856 11.6975 14.5542 13.8087 13.1189 15.2496L8.27129 20.1161C6.83696 21.556 4.73889 21.5862 3.57742 20.4202C2.41376 19.2521 2.4451 17.1408 3.8804 15.6999L6.30424 13.2666C6.59657 12.9732 6.59565 12.4983 6.30219 12.206C6.00873 11.9137 5.53386 11.9146 5.24153 12.208L2.81769 14.6413C0.906387 16.56 0.666428 19.6234 2.5147 21.4788C4.36518 23.3365 7.42173 23.0944 9.334 21.1747L14.1816 16.3082C16.0929 14.3895 16.3329 11.3262 14.4846 9.4707Z"
-                                  fill="#ffffff"
-                                ></path>{" "}
-                              </g>
-                            </svg>
-                            <div>Repo</div>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+                <CardBody className="relative group/card hover:shadow-2xl hover:shadow-purple-500/20 bg-black/30 w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+                  <CardItem className="text-xl font-bold">
+                    {project.title}
+                  </CardItem>
+                  <CardItem
+                    as="p"
+                    className="text-sm max-w-sm mt-2 text-neutral-300"
+                  >
+                    {project.description}
+                  </CardItem>
+                  <CardItem className="w-full mt-4">
+                    <Image
+                      src={project.image}
+                      height="1000"
+                      width="1000"
+                      className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                      alt={project.title}
+                    />
+                  </CardItem>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {project.techStack.map((tech, index) => (
+                      <CardItem
+                        key={index}
+                        className="bg-transparent border border-white text-white rounded-full px-4 py-2 text-xs"
+                      >
+                        {tech}
+                      </CardItem>
+                    ))}
                   </div>
-                </div>
-              </motion.ul>
+                  <div className="flex justify-between items-center mt-10">
+                    <CardItem
+                      as="a"
+                      target="_blank"
+                      href={project.live}
+                      className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-normal font-bold hover:bg-slate-500"
+                    >
+                      Live
+                    </CardItem>
+                    <CardItem
+                      as="a"
+                      target="_blank"
+                      href={project.repo}
+                      className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-normal font-bold hover:bg-slate-500"
+                    >
+                      Repo
+                    </CardItem>
+                  </div>
+                </CardBody>
+              </CardContainer>
             ))}
           </div>
         </div>
+      </div>
+      <div className="mt-2 flex justify-end text-slate-200 text-opacity-80 text-sm md:text-base hover:underline animate-bounce">
+        <Link href="/project" className="flex whitespace-nowrap space-x-2">
+          <span>Discover more about my projects here</span>
+          <FaArrowRight className="w-5 h-5" />
+        </Link>
       </div>
     </div>
   );
