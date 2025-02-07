@@ -9,7 +9,7 @@ export default function Latest() {
   const projects = [
     {
       id: 1,
-      image: "/vlecture.png",
+      image: "/my-portfolio/vlecture.png",
       title: "vlecture",
       description:
         "A notetaking companion app for students to upload the audio of their lectures and create personalized notes, flashcards, and quizzes based on the audio transcription.",
