@@ -128,7 +128,7 @@ export default function AboutMore() {
                 </h1>
                 <div className="text-md md:text-lg lg:text-xl text-justify text-gray-300 font-thin">
                   <span className="text-white font-semibold">Annava</span>, a
-                  third-year{" "}
+                  final-year{" "}
                   <span className="text-white font-semibold">
                     Computer Science
                   </span>{" "}
@@ -203,7 +203,7 @@ export default function AboutMore() {
               <h1 className="font-bold text-2xl text-center mb-5">About Me</h1>
               <div className="text-md md:text-lg lg:text-xl text-justify text-gray-300 font-thin">
                 <span className="text-white font-semibold">Annava</span>, a
-                third-year{" "}
+                final-year{" "}
                 <span className="text-white font-semibold">
                   Computer Science
                 </span>{" "}
