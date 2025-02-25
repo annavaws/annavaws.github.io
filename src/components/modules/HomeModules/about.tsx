@@ -17,7 +17,7 @@ const About = () => {
               <Highlight className="text-slate-200 font-semibold">
                 Annava
               </Highlight>{" "}
-              is a third-year{" "}
+              is a final-year{" "}
               <Highlight className="text-slate-200 font-semibold">
                 Computer Science
               </Highlight>{" "}
