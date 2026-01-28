@@ -82,7 +82,7 @@ export default function Box() {
       description:
         "My portfolio website featuring finished projects, technologies, blogs, and socials.",
       techStack: ["NextJS", "TypeScript", "Tailwind", "Netlify"],
-      live: "https://annavaws.com",
+      live: "https://annavaws.github.io",
       repo: "https://github.com/annavaws/my-portfolio",
     },
   ];
@@ -143,11 +143,12 @@ export default function Box() {
                         ))}
                       </div>
                       <div className="flex flex-row justify-between w-full mt-2">
-                        <div className="w-1/2">
+                        <div className="w-1/2 relative group/live">
                           <a
                             href={project.live}
                             target="_blank"
-                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2 hover:text-orange-500 hover:scale-105"
+                            className="mr-3 whitespace-nowrap flex flex-grow items-center space-x-2 hover:text-orange-500 hover:scale-105 opacity-50 cursor-not-allowed"
+                            onClick={(e) => e.preventDefault()}
                           >
                             <svg
                               viewBox="0 0 24 24"
@@ -155,11 +156,11 @@ export default function Box() {
                               xmlns="http://www.w3.org/2000/svg"
                               className="w-6 h-6"
                             >
-                              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                               <g
                                 id="SVGRepo_tracerCarrier"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                               ></g>
                               <g id="SVGRepo_iconCarrier">
                                 {" "}
@@ -176,6 +177,9 @@ export default function Box() {
                             </svg>
                             <div>Live</div>
                           </a>
+                          <div className="absolute bottom-full left-0 mb-2 px-3 py-1 bg-gray-800 text-white text-xs rounded-md opacity-0 group-hover/live:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+                            No longer available
+                          </div>
                         </div>
 
                         <div className="w-1/2 hover:text-orange-500 hover:scale-105">
