@@ -42,7 +42,7 @@ export default function Latest() {
       description:
         "My portfolio website featuring finished projects, technologies, blogs, and socials.",
       techStack: ["NextJS", "TypeScript", "Tailwind", "Netlify"],
-      live: "https://annavaws.com",
+      live: "https://annavaws.github.io",
       repo: "https://github.com/annavaws/my-portfolio",
     },
     {
@@ -102,14 +102,17 @@ export default function Latest() {
                     ))}
                   </div>
                   <div className="flex justify-between items-center mt-10">
-                    <CardItem
-                      as="a"
-                      target="_blank"
-                      href={project.live}
-                      className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-normal font-bold hover:bg-slate-500"
-                    >
-                      Live
-                    </CardItem>
+                    <div className="relative group/live">
+                      <CardItem
+                        as="span"
+                        className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-normal font-bold opacity-50 cursor-not-allowed"
+                      >
+                        Live
+                      </CardItem>
+                      <div className="absolute bottom-full left-0 mb-2 px-3 py-1 bg-gray-800 text-white text-xs rounded-md opacity-0 group-hover/live:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50">
+                        No longer available
+                      </div>
+                    </div>
                     <CardItem
                       as="a"
                       target="_blank"

@@ -9,20 +9,20 @@ import Head from "next/head";
 const metadata = {
   title: "Annava Wisha Sikoko - Software Engineer",
   description:
-    "Portfolio of Annava Wisha Sikoko, a third-year Computer Science student at the University of Indonesia, is deeply passionate about Software Engineering. She’s dedicated to expanding her expertise, actively engaging in learning and applying her skills in both Front End and Back End Development.",
+    "Annava Wisha Sikoko is a Computer Science graduate from the University of Indonesia, specializing in Full Stack Development. Experienced in building scalable web applications using React, Next.js, Django, FastAPI, and Spring Boot.",
   keywords:
-    "Annava Wisha Sikoko, software engineer, web developer, portfolio, JavaScript, TypeScript, React, Next.js, Django, FastAPI, Python, Java",
+    "Annava Wisha Sikoko, software engineer, full stack developer, web developer, portfolio, JavaScript, TypeScript, React, Next.js, Django, FastAPI, Spring Boot, Python, Java",
   author: "Annava Wisha Sikoko",
   ogTitle: "Annava Wisha Sikoko - Software Engineer",
   ogDescription:
-    "Welcome to the portfolio of Annava Wisha Sikoko, showcasing expertise in software engineering and web development.",
-  ogUrl: "https://annavaws.com",
-  ogImage: "https://annavaws.com/_next/image?url=%2Fme.jpg&w=2048&q=75",
-  twitterCard: "Annava",
+    "Computer Science graduate from University of Indonesia. Full Stack Developer specializing in React, Next.js, Django, and Spring Boot.",
+  ogUrl: "https://annavaws.github.io",
+  ogImage: "https://annavaws.github.io/me.jpg",
+  twitterCard: "summary_large_image",
   twitterTitle: "Annava Wisha Sikoko - Software Engineer",
   twitterDescription:
-    "Explore the portfolio of Annava Wisha Sikoko, a wannabe software engineer.",
-  twitterImage: "https://annavaws.com/_next/image?url=%2Fme.jpg&w=2048&q=75",
+    "Computer Science graduate & Full Stack Developer. Building scalable web applications with modern technologies.",
+  twitterImage: "https://annavaws.github.io/me.jpg",
 };
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -47,7 +47,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta name="twitter:image" content={metadata.twitterImage} />
 
-        <link rel="canonical" href="https://annavaws.com" />
+        <link rel="canonical" href="https://annavaws.github.io" />
         <meta name="robots" content="index, follow" />
       </Head>
       <Navbar />
