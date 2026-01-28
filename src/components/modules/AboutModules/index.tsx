@@ -127,12 +127,11 @@ export default function AboutMore() {
                   About Me
                 </h1>
                 <div className="text-md md:text-lg lg:text-xl text-justify text-gray-300 font-thin">
-                  <span className="text-white font-semibold">Annava</span>, a
-                  final-year{" "}
+                  <span className="text-white font-semibold">Annava</span>, a{" "}
                   <span className="text-white font-semibold">
                     Computer Science
                   </span>{" "}
-                  student at the{" "}
+                  graduate from the{" "}
                   <span className="text-white font-semibold">
                     University of Indonesia
                   </span>
@@ -202,12 +201,11 @@ export default function AboutMore() {
             <div className="flex flex-col items-center text-slate-200">
               <h1 className="font-bold text-2xl text-center mb-5">About Me</h1>
               <div className="text-md md:text-lg lg:text-xl text-justify text-gray-300 font-thin">
-                <span className="text-white font-semibold">Annava</span>, a
-                final-year{" "}
+                <span className="text-white font-semibold">Annava</span>, a{" "}
                 <span className="text-white font-semibold">
                   Computer Science
                 </span>{" "}
-                student at the{" "}
+                graduate from the{" "}
                 <span className="text-white font-semibold">
                   University of Indonesia
                 </span>

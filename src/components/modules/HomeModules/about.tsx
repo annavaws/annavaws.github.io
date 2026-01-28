@@ -17,11 +17,11 @@ const About = () => {
               <Highlight className="text-slate-200 font-semibold">
                 Annava
               </Highlight>{" "}
-              is a final-year{" "}
+              is a{" "}
               <Highlight className="text-slate-200 font-semibold">
                 Computer Science
               </Highlight>{" "}
-              student at the{" "}
+              graduate from the{" "}
               <Highlight className="text-slate-200 font-semibold">
                 University of Indonesia
               </Highlight>{" "}
@@ -29,8 +29,7 @@ const About = () => {
               <Highlight className="text-slate-200 font-semibold">
                 Software Engineering
               </Highlight>
-              . Dedicated to expanding her knowledge, she is actively engaged in
-              learning and applying her skills in both{" "}
+              . Passionate about continuous learning, she applies her skills in both{" "}
               <Highlight className="text-slate-200 font-semibold">
                 Front End
               </Highlight>{" "}
