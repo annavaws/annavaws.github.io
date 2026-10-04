@@ -1,72 +1,111 @@
-import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
-import { poppins } from "@/styles/fonts";
-import { FaHome, FaUser, FaProjectDiagram, FaBlog } from "react-icons/fa";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { navLinks } from "@/data/content";
+import { cn } from "@/utils/cn";
 
 const Navbar = () => {
-  const [hasScrolled, setHasScrolled] = useState(false);
   const router = useRouter();
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 26 });
 
   useEffect(() => {
-    const handleScroll = () => {
-      setHasScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    const handleScroll = () => setHasScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const links = [
-    { href: "/", icon: <FaHome />, label: "Home" },
-    { href: "/about", icon: <FaUser />, label: "About" },
-    { href: "/project", icon: <FaProjectDiagram />, label: "Projects" },
-    { href: "/blog", icon: <FaBlog />, label: "Blog" },
-  ];
+  useEffect(() => setOpen(false), [router.asPath]);
 
   return (
-    <div className="w-full flex justify-center items-center">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-5">
       <nav
-        className={`${
-          poppins.className
-        } bg-black/50 w-9/12 rounded-2xl backdrop-blur-2xl fixed top-10 z-50 h-[10vh] flex flex-row justify-between items-center px-10 text-slate-200 ${
-          hasScrolled ? "border-b-[0.1px] border-gray-500" : ""
-        }`}
+        aria-label="Main"
+        className={cn(
+          "relative mx-auto flex h-14 max-w-[1200px] items-center justify-between overflow-hidden rounded-full border px-5 transition-colors duration-300",
+          hasScrolled || open
+            ? "border-line bg-ink/80 backdrop-blur-xl"
+            : "border-transparent"
+        )}
       >
-        <Link href="/">
-          <span
-            className={`w-[140px] text-lg flex items-center gap-2 hover:text-orange-800 hover:underline hover:underline-offset-8 ${
-              router.pathname === "/" ? "text-orange-500" : ""
-            }`}
-          >
-            nav
-          </span>
+        <Link
+          href="/"
+          className="font-display text-xl font-extrabold uppercase tracking-wide text-fg"
+        >
+          Annava<span className="text-accent">.</span>
         </Link>
 
-        <div className="flex gap-6">
-          {links.map(({ href, icon, label }) => (
-            <Link href={href} key={href} passHref>
-              <div className="relative group">
-                <span
-                  className={`text-lg flex items-center gap-2 hover:text-orange-800 hover:underline hover:underline-offset-8 bg-white/10 p-3 rounded-xl transition-all duration-300 ${
-                    router.pathname === href ? "text-orange-500" : ""
-                  }`}
-                >
-                  {icon}
-                </span>
-
-                {/* Tooltip */}
-                <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 text-xs text-white bg-black px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {label}
-                </span>
-              </div>
-            </Link>
+        <ul className="hidden items-center gap-1 md:flex">
+          {navLinks.map(({ href, label }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                className={cn(
+                  "rounded-full px-3 py-2 font-mono text-xs uppercase tracking-wider transition-colors hover:text-accent",
+                  router.pathname === href ? "text-accent" : "text-muted"
+                )}
+              >
+                {label}
+              </Link>
+            </li>
           ))}
-        </div>
+          <li>
+            <Link href="/#contact" className="btn-primary ml-2 !px-4 !py-2 !text-xs">
+              Contact
+            </Link>
+          </li>
+        </ul>
+
+        <button
+          className="font-mono text-xs uppercase tracking-wider text-fg md:hidden"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? "Close" : "Menu"}
+        </button>
+
+        <motion.span
+          aria-hidden
+          style={{ scaleX: progress }}
+          className="absolute inset-x-0 bottom-0 h-px origin-left bg-accent"
+        />
       </nav>
-    </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="panel mx-auto mt-2 max-w-[1200px] !bg-ink/95 p-3 md:hidden"
+          >
+            {[...navLinks, { href: "/#contact", label: "Contact" }].map(
+              ({ href, label }, i) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-4 rounded-lg px-3 py-3 font-display text-2xl font-extrabold uppercase text-fg hover:text-accent"
+                  >
+                    <span className="font-mono text-[11px] font-normal text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {label}
+                  </Link>
+                </li>
+              )
+            )}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 

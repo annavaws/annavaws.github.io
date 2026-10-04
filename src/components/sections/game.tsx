@@ -1,0 +1,23 @@
+import dynamic from "next/dynamic";
+import React from "react";
+import { Reveal, SectionHeading } from "@/components/ui/reveal";
+
+const RocketGame = dynamic(() => import("@/components/game/rocket-game"), {
+  ssr: false,
+  loading: () => (
+    <div className="panel h-[min(70vh,560px)] min-h-[420px] animate-pulse" />
+  ),
+});
+
+export default function Game() {
+  return (
+    <section id="game" className="relative py-24 md:py-36">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-8">
+        <SectionHeading index="05" label="Break room" title="Take the rocket for a spin" />
+        <Reveal>
+          <RocketGame />
+        </Reveal>
+      </div>
+    </section>
+  );
+}

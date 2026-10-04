@@ -2,189 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  background: #070b14;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  font-family: "Poppins", sans-serif, "Hedvig";
+  color: #e8ecf4;
+  background: #070b14;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  /* Mono telemetry label, e.g. "01 / ABOUT" */
+  .label {
+    @apply font-mono text-xs uppercase tracking-[0.14em] text-signal;
+  }
+
+  .panel {
+    @apply rounded-xl border border-line bg-surface/80 backdrop-blur-sm;
+  }
+
+  .chip {
+    @apply rounded-full border border-line bg-raised/60 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-muted;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-mono text-sm uppercase tracking-wider text-ink transition-transform duration-200 ease-enter hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-ink/60 px-6 py-3 font-mono text-sm uppercase tracking-wider text-fg backdrop-blur transition-colors duration-200 hover:border-signal hover:text-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Faint blueprint grid used behind sections */
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        rgba(34, 48, 73, 0.35) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(34, 48, 73, 0.35) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+  }
 }
 
-.galaxy-background {
+/* Static planet shown when WebGL is unavailable or motion is reduced */
+.planet-fallback {
   background: radial-gradient(
-      circle at 20% 20%,
-      rgba(117, 38, 9, 0.8),
-      transparent 30%
+      circle at 35% 30%,
+      rgba(92, 225, 230, 0.35),
+      transparent 45%
     ),
-    radial-gradient(circle at 75% 75%, #fffb29, transparent 30%),
-    radial-gradient(circle at 65% 65%, rgba(0, 128, 255, 0.7), transparent 40%),
-    linear-gradient(to bottom, #170936 0%, #000000 100%);
-
-  background-color: #07020e;
-  background-blend-mode: screen, multiply, normal;
-  background-repeat: no-repeat;
-}
-
-/* .galaxy-background-2 {
-  background: radial-gradient(
-      circle at 80% 20%,
-      rgba(255, 166, 0, 0.782),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 40% 85%,
-      rgba(120, 10, 255, 0.956),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 20% 95%,
-      rgba(0, 255, 179, 0.956),
-      transparent 30%
-    ),
-    linear-gradient(to bottom, #170936 0%, #000000 100%);
-
-  background-color: #07020e;
-  background-blend-mode: screen, multiply, normal;
-  background-repeat: no-repeat;
-} */
-
-@keyframes moveGradient1 {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-10%, 10%);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes moveGradient2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(10%, -10%);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes moveGradient3 {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-10%, -10%);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-.galaxy-background-2 {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, #170936 0%, #000000 100%);
-  background-color: #07020e;
-  overflow: hidden;
-}
-
-.galaxy-background-2::before,
-.galaxy-background-2::after,
-.galaxy-background-2 span {
-  content: "";
-  position: absolute;
-  width: 300%;
-  height: 300%;
-  top: -100%;
-  left: -100%;
-  z-index: -10;
-  background: radial-gradient(circle, transparent 30%);
-  animation-duration: 8s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
-  mix-blend-mode: screen;
-}
-
-.galaxy-background-2::before {
-  background: radial-gradient(
-    circle at 80% 20%,
-    rgba(255, 166, 0, 0.782),
-    transparent 30%
-  );
-  animation-name: moveGradient1;
-}
-
-.galaxy-background-2::after {
-  background: radial-gradient(
-    circle at 40% 85%,
-    rgba(0, 204, 255, 0.956),
-    transparent 30%
-  );
-  animation-name: moveGradient2;
-}
-
-.galaxy-background-2 span {
-  background: radial-gradient(
-    circle at 20% 95%,
-    rgba(14, 199, 255, 0.956),
-    transparent 30%
-  );
-  animation-name: moveGradient3;
-}
-
-.noise-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/noise.webp");
-  background-size: 30%;
-  opacity: 0.1;
-  transform: scale(1.2);
-  mask-image: radial-gradient(circle, #fff, transparent 75%);
-  pointer-events: none;
-}
-
-*::-webkit-scrollbar {
-  width: 0px;
+    radial-gradient(circle at 50% 50%, #151e31 0%, #0e1524 60%, #070b14 100%);
+  box-shadow: 0 0 120px 10px rgba(255, 122, 26, 0.18),
+    inset -40px -40px 80px rgba(0, 0, 0, 0.6);
 }
 
 ::selection {
-  color: rgb(62, 62, 62);
-  background-color: rgb(255, 155, 33);
+  color: #070b14;
+  background-color: #ff7a1a;
 }
 
-::-moz-selection {
-  /* Code for Firefox */
-  color: rgb(62, 62, 62);
-  background-color: rgb(255, 155, 33);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

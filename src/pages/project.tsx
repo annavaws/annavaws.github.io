@@ -1,11 +1,5 @@
-import Box from "@/components/modules/ProjectModules/box";
+import SectionRedirect from "@/components/elements/section-redirect";
 
 export default function Project() {
-  return (
-    <>
-      <div className="relative z-10">
-        <Box />
-      </div>
-    </>
-  );
+  return <SectionRedirect to="/#projects" />;
 }

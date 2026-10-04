@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { albert, poppins } from "@/styles/fonts";
-import { Skeleton } from "@/components/ui/skeleton";
+import React from "react";
 import blogData from "@/components/modules/BlogModules/data.json";
+import { Reveal } from "@/components/ui/reveal";
+import { TiltCard } from "@/components/ui/tilt-card";
+
 interface BlogPost {
   title: string;
   link: string;
@@ -9,86 +10,61 @@ interface BlogPost {
   pubDate: string;
 }
 
-interface BlogApiResponse {
-  status: string;
-  items: BlogPost[];
-}
+const posts: BlogPost[] = blogData.status === "ok" ? blogData.items : [];
+
+const formatDate = (dateString: string) =>
+  new Date(dateString.replace(" ", "T")).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
 
 const BlogPosts: React.FC = () => {
-  const [loading, setLoading] = useState(true);
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        // Simulating fetch with local data
-        const data: BlogApiResponse = blogData;
-        if (data.status === "ok") {
-          console.log(data);
-          setPosts(data.items);
-          setLoading(false);
-        }
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString();
-  };
-
   return (
-    <div
-      className={`${albert.className} blog-container bg-black text-slate-200 galaxy-background`}
-    >
-      <div className="font-semibold text-4xl text-center md:ml-10 md:text-left p-8 pt-32 md:pt-40 mb-10">
-        My Blog
-      </div>
-      {loading ? (
-        <div className="flex flex-col justify-center items-center mx-3 px-12">
-          <Skeleton className="w-full md:w-2/3 p-24 rounded-xl border border-gray-500 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
-          <Skeleton className="w-full md:w-2/3 p-24 rounded-xl border border-gray-500 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
-          <Skeleton className="w-full md:w-2/3 p-24 rounded-xl border border-gray-500 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12" />
-        </div>
-      ) : (
-        <div className="posts-list">
-          {posts.map((post, index) => (
-            <div
-              key={post.guid}
-              className="flex justify-center items-center mx-3"
-            >
-              <div
-                className={`w-full p-12 md:w-2/3 md:p-10 rounded-xl border duration-500 ease-in-out
-                  ${
-                    index % 2 === 0 ? "hover:-rotate-2" : "hover:rotate-2"
-                  } hover:duration-500 hover:border-gray-100 border-gray-500 bg-black/50 mb-6 mx-5 md:m-0 md:mb-12`}
-              >
-                <div
-                  className={`${poppins.className} text-xl md:text-3xl font-bold mb-4`}
-                >
-                  {post.title}
-                </div>
-                <div className="text-md md:text-xl font-semibold mb-2">
-                  Published on: {formatDate(post.pubDate)}
-                </div>
+    <main className="relative min-h-screen pb-24 pt-36 md:pt-44">
+      <div className="absolute inset-0 bg-grid" aria-hidden />
+      <div className="relative mx-auto max-w-[1200px] px-5 md:px-8">
+        <Reveal className="mb-12 md:mb-16">
+          <p className="label mb-4">
+            <span className="text-accent">Log</span> / Writing
+          </p>
+          <h1 className="font-display text-[clamp(3rem,9vw,7rem)] font-black uppercase leading-[0.9] text-fg">
+            Transmissions
+          </h1>
+          <p className="mt-4 max-w-xl text-lg text-muted">
+            Notes on software engineering, published on Medium.
+          </p>
+        </Reveal>
+
+        <div className="grid gap-5 md:grid-cols-2">
+          {posts.map((post, i) => (
+            <Reveal key={post.guid} delay={(i % 2) * 0.08}>
+              <TiltCard max={6} className="panel">
                 <a
                   href={post.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:underline hover:underline-offset-2"
+                  className="group flex h-full flex-col p-7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal"
                 >
-                  Read more on Medium
+                  <p className="flex items-center justify-between font-mono text-xs uppercase tracking-wider text-muted">
+                    <span>{formatDate(post.pubDate)}</span>
+                    <span className="text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </p>
+                  <h2 className="mt-4 flex-1 text-2xl font-semibold leading-snug text-fg transition-colors group-hover:text-accent">
+                    {post.title}
+                  </h2>
+                  <p className="mt-6 font-mono text-xs uppercase tracking-wider text-signal">
+                    Read on Medium <span aria-hidden>↗</span>
+                  </p>
                 </a>
-              </div>
-            </div>
+              </TiltCard>
+            </Reveal>
           ))}
         </div>
-      )}
-    </div>
+      </div>
+    </main>
   );
 };
 
