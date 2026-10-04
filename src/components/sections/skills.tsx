@@ -138,7 +138,7 @@ export default function Skills() {
   return (
     <section id="skills" className="relative py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-5 md:px-8">
-        <SectionHeading title="Payload manifest" />
+        <SectionHeading index="04" label="Skills" title="Payload manifest" />
 
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal>

@@ -8,6 +8,9 @@ export default function Contact() {
     <section id="contact" className="relative py-28 md:py-44">
       <div className="relative mx-auto max-w-[1200px] px-5 md:px-8">
         <Reveal>
+          <p className="label mb-4">
+            <span className="text-accent">06</span> / Contact
+          </p>
           <h2 className="font-display text-[clamp(3rem,10vw,8.5rem)] font-black uppercase leading-[1] text-fg">
             Let&apos;s work
             <br />

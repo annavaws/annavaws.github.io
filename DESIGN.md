@@ -36,7 +36,7 @@
 - **Section padding:** 96px mobile, 144px desktop. **Max content width:** 1200px.
 
 ## Layout
-- **Approach:** Creative-editorial. Left-aligned headings without eyebrow labels, asymmetric grids, section padding varies by section.
+- **Approach:** Creative-editorial. Left-aligned headings with mono index labels above them (`01 / ABOUT`), kept by owner preference, asymmetric grids, section padding varies by section.
 - **Border radius:** sm 6px, md 12px, lg 20px, pill 9999px. Panels use md with a 1px line border.
 
 ## Motion
@@ -53,4 +53,4 @@
 | 2026-10-04 | Real WebGL with fallback | User wants heavy 3D. Static fallback covers reduced motion and missing WebGL. |
 | 2026-10-04 | One-page scroll + Blog | Scroll-driven story. /about and /project redirect to anchors. |
 | 2026-10-04 | Rocket Courier game section | Collect stack tokens, dodge 502s and race conditions from the CV. |
-| 2026-10-04 | Hallmark audit fixes | Removed eyebrows, glows and accent headline fills; hero fits the fold; globe is draggable; colours moved to tokens; stats limited to figures verified in git. |
+| 2026-10-04 | Hallmark audit fixes | Removed glows and accent headline fills (index labels restored at the owner's request); hero fits the fold; globe is draggable; colours moved to tokens; stats limited to figures verified in git. |

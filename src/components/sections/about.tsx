@@ -38,7 +38,7 @@ export default function About() {
   return (
     <section id="about" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-[1200px] px-5 md:px-8">
-        <SectionHeading title="Engineer on the ground, systems in orbit" />
+        <SectionHeading index="01" label="About" title="Engineer on the ground, systems in orbit" />
 
         <div className="grid gap-12 lg:grid-cols-[360px_1fr] lg:gap-20">
           <Reveal>

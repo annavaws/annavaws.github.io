@@ -12,7 +12,7 @@ export default function Experience() {
   return (
     <section id="experience" className="relative py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-5 md:px-8">
-        <SectionHeading title="Mission log" />
+        <SectionHeading index="02" label="Experience" title="Mission log" />
 
         <Reveal>
           <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
