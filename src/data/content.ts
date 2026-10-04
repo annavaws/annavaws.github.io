@@ -9,7 +9,7 @@ export const profile = {
   github: "https://github.com/annavaws",
   summary:
     "Full stack engineer and University of Indonesia Computer Science graduate, working remotely with a Seoul-based team since 2025. I build across the stack: NestJS and PostgreSQL services, Next.js and React front ends, Shopify storefronts, and Python data pipelines.",
-  lede: "I build across the stack: NestJS and PostgreSQL services, Next.js and React front ends, Shopify storefronts, and Python data pipelines.",
+  lede: "I build across the stack: NestJS and PostgreSQL services, Next.js and React front ends, Shopify storefronts and Python pipelines.",
   about:
     "Recent work centres on a multi-tenant eSIM commerce platform, including marketplace integrations, payment and refund flows, security fixes, and production debugging, delivered with automated tests and an AI-assisted development workflow.",
 };
@@ -73,12 +73,12 @@ export const aisahub = {
   org: "Aisahub Inc",
   place: "Seoul, South Korea (Remote)",
   title: "Full Stack Engineer (Contract)",
-  dates: "Jun 2025 – Present",
+  dates: "Jun 2025 - Present",
   projects: [
     {
       name: "PlanetT",
       tagline: "eSIM order-fulfilment platform for Trip.com, Shopify and Lazada",
-      dates: "Jul 2026 – Present",
+      dates: "Jul 2026 - Present",
       stack: [
         "NestJS",
         "TypeScript",
@@ -103,7 +103,7 @@ export const aisahub = {
     {
       name: "Roamigo",
       tagline: "Shopify storefront for travel eSIMs",
-      dates: "Aug 2026 – Present",
+      dates: "Aug 2026 - Present",
       stack: [
         "Shopify Liquid",
         "Web components",
@@ -140,7 +140,7 @@ export const aisahub = {
     {
       name: "AI Ticketsmith",
       tagline: "Autonomous ticket-to-pull-request pipeline",
-      dates: "May 2026 – Jun 2026",
+      dates: "May 2026 - Jun 2026",
       stack: [
         "Python",
         "Claude Code",
@@ -160,7 +160,7 @@ export const aisahub = {
     {
       name: "Octos",
       tagline: "Mental-health AI chat and guided meditation",
-      dates: "Mar 2026 – May 2026",
+      dates: "Mar 2026 - May 2026",
       stack: [
         "React",
         "TypeScript",
@@ -178,7 +178,7 @@ export const aisahub = {
     {
       name: "VUS",
       tagline: "Waste-transport logistics and dispatch web app",
-      dates: "Sep 2025 – Dec 2025",
+      dates: "Sep 2025 - Dec 2025",
       stack: [
         "React 19",
         "TypeScript",
@@ -196,7 +196,7 @@ export const aisahub = {
     {
       name: "Data pipelines",
       tagline: "Scrapers for travel platforms and ad-library monitoring",
-      dates: "Jun 2025 – Mar 2026",
+      dates: "Jun 2025 - Mar 2026",
       stack: [
         "Python",
         "Playwright",
@@ -221,21 +221,21 @@ export const earlierRoles = [
     org: "Nusantara Infrastructure",
     place: "Jakarta, Indonesia",
     title: "Fullstack Developer Intern",
-    dates: "Sep 2024 – Dec 2024",
+    dates: "Sep 2024 - Dec 2024",
     text: "Revamped tolmakassar.com in Laravel and MySQL, improving performance and user experience, and added a billboard advertising section with CMS management for ads.",
   },
   {
     org: "Established Jakarta",
     place: "Jakarta, Indonesia",
     title: "Web Developer Intern",
-    dates: "Mar 2024 – Jun 2024",
+    dates: "Mar 2024 - Jun 2024",
     text: "Built a CMS preview feature for Mulia Inti Pangan, and the company profile website and CMS authentication for Established Jakarta, using Laravel, PostgreSQL and Next.js.",
   },
   {
     org: "Faculty of Computer Science, University of Indonesia",
     place: "",
     title: "Teaching Assistant",
-    dates: "Aug 2023 – Jun 2025",
+    dates: "Aug 2023 - Jun 2025",
     text: "Data Structures & Algorithms, Foundations of Programming 1, Automata & Theory of Languages. Supported 30+ students through lab sessions, wrote lab assignments and graded work with written feedback.",
   },
 ];
@@ -243,13 +243,13 @@ export const earlierRoles = [
 export const education = [
   {
     org: "University of Indonesia",
-    title: "Bachelor of Computer Science — GPA 3.63 / 4.00",
-    dates: "Sep 2021 – Jul 2025",
+    title: "Bachelor of Computer Science, GPA 3.63 / 4.00",
+    dates: "Sep 2021 - Jul 2025",
   },
   {
     org: "Bangkit Academy",
-    title: "Cloud Computing Cohort — led by Google, Tokopedia, Gojek & Traveloka",
-    dates: "Feb 2024 – Jun 2024",
+    title: "Cloud Computing Cohort, led by Google, Tokopedia, Gojek & Traveloka",
+    dates: "Feb 2024 - Jun 2024",
   },
 ];
 

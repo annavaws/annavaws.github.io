@@ -497,12 +497,12 @@ export default function RocketGame() {
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-ink/80 px-6 text-center">
           {phase === "over" ? (
             <>
-              <p className="label !text-danger">Signal lost</p>
+              <p className="label !text-danger">Game over</p>
               <p className="mt-3 font-display text-6xl font-black uppercase text-fg md:text-7xl">
                 {score} pts
               </p>
               <p className="mt-2 font-mono text-sm text-muted">
-                {newBest ? "New personal best. Payload delivered." : `Best: ${best}`}
+                {newBest ? "New personal best." : `Best: ${best}`}
               </p>
             </>
           ) : (
@@ -521,8 +521,10 @@ export default function RocketGame() {
           <button onClick={start} className="btn-primary mt-7">
             {phase === "over" ? "Fly again" : "Launch"}
           </button>
-          <p className="mt-5 font-mono text-[11px] uppercase tracking-wider text-muted">
-            Mouse or touch to steer · WASD / arrows · Esc to quit
+          <p className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-1 font-mono text-[11px] uppercase tracking-wider text-muted">
+            <span>Mouse or touch to steer</span>
+            <span>WASD / arrows</span>
+            <span>Esc to quit</span>
           </p>
         </div>
       )}

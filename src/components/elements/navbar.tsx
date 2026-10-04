@@ -1,4 +1,10 @@
-import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+} from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -9,15 +15,10 @@ const Navbar = () => {
   const router = useRouter();
   const [hasScrolled, setHasScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { scrollYProgress } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 26 });
 
-  useEffect(() => {
-    const handleScroll = () => setHasScrolled(window.scrollY > 24);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (y) => setHasScrolled(y > 24));
 
   useEffect(() => setOpen(false), [router.asPath]);
 

@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { motion, useReducedMotion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { profile } from "@/data/content";
+import { cn } from "@/utils/cn";
 
 const HeroScene = dynamic(() => import("@/components/three/hero-scene"), {
   ssr: false,
@@ -14,22 +15,6 @@ function hasWebGL() {
   } catch {
     return false;
   }
-}
-
-function LocalTime() {
-  const [time, setTime] = useState("--:--");
-  useEffect(() => {
-    const format = () =>
-      new Intl.DateTimeFormat("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit",
-        timeZone: profile.timezone,
-      }).format(new Date());
-    setTime(format());
-    const id = setInterval(() => setTime(format()), 30_000);
-    return () => clearInterval(id);
-  }, []);
-  return <span className="tabular-nums">{time} WIB</span>;
 }
 
 function StaggerLine({ text, delay }: { text: string; delay: number }) {
@@ -82,7 +67,10 @@ export default function Hero() {
     <section
       ref={ref}
       id="top"
-      className="relative flex flex-col overflow-hidden"
+      className={cn(
+        "relative flex flex-col overflow-hidden",
+        use3d && finePointer && "cursor-grab active:cursor-grabbing"
+      )}
     >
       <div className="absolute inset-0 bg-grid" aria-hidden />
       <div className="absolute inset-0" aria-hidden>
@@ -95,15 +83,14 @@ export default function Hero() {
         )}
       </div>
 
-      <div className="relative mx-auto flex w-full max-w-[1200px] flex-col px-5 pb-56 pt-28 md:px-8 md:pb-20 md:pt-32">
+      <div className="relative mx-auto flex w-full max-w-[1200px] flex-col px-5 pb-64 pt-24 md:px-8 md:pb-32">
         <motion.p
-          className="label mb-6 flex items-center gap-3"
+          className="label mb-6"
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
         >
-          <span className="h-2 w-2 animate-blink rounded-full bg-ok" />
-          {profile.role} · Open to remote work
+          {profile.role}
         </motion.p>
 
         <h1 className="font-display text-[clamp(3.5rem,11vw,9.5rem)] font-black uppercase leading-[1] tracking-tight text-fg">
@@ -118,40 +105,16 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mt-6 max-w-2xl"
         >
-          <p className="font-mono text-sm uppercase tracking-wider text-fg">
-            {profile.focus}
-          </p>
-          <p className="mt-4 text-lg leading-relaxed text-muted">
-            {profile.lede}
-          </p>
+          <p className="text-lg leading-relaxed text-muted">{profile.lede}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#experience" className="btn-primary">
-              View my work <span aria-hidden>↓</span>
+              View my work
             </a>
             <a href="#game" className="btn-ghost">
               Play Rocket Courier
             </a>
           </div>
         </motion.div>
-      </div>
-
-      {/* Telemetry strip */}
-      <div className="relative border-t border-line bg-ink/85">
-        <dl className="mx-auto grid max-w-[1200px] grid-cols-2 gap-x-6 gap-y-3 px-5 py-4 font-mono text-xs uppercase tracking-wider md:grid-cols-4 md:px-8">
-          {[
-            ["Base", profile.location],
-            ["Local time", <LocalTime key="t" />],
-            ["Current", "Aisahub Inc · Seoul"],
-            use3d && finePointer
-              ? ["Globe", "Drag to spin"]
-              : ["Mode", "Remote since 2025"],
-          ].map(([k, v]) => (
-            <div key={k as string}>
-              <dt className="text-muted">{k}</dt>
-              <dd className="mt-1 text-fg">{v}</dd>
-            </div>
-          ))}
-        </dl>
       </div>
     </section>
   );

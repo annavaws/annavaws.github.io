@@ -26,10 +26,10 @@ const BlogPosts: React.FC = () => {
       <div className="relative mx-auto max-w-[1200px] px-5 md:px-8">
         <Reveal className="mb-12 md:mb-16">
           <p className="label mb-4">
-            <span className="text-accent">Log</span> / Writing
+            <span className="text-accent">07</span> / Blog
           </p>
           <h1 className="font-display text-[clamp(3rem,9vw,7rem)] font-black uppercase leading-[1] text-fg">
-            Transmissions
+            Writing
           </h1>
           <p className="mt-4 max-w-xl text-lg text-muted">
             Notes on software engineering, published on Medium.

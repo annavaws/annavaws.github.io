@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { FaGithub } from "react-icons/fa";
+import { GithubLogo } from "@phosphor-icons/react";
 import { projects } from "@/data/content";
 import { Reveal, SectionHeading } from "@/components/ui/reveal";
 import { TiltCard } from "@/components/ui/tilt-card";
@@ -10,7 +10,7 @@ export default function Projects() {
     <section id="projects" className="relative py-24 md:py-40">
       <div className="absolute inset-0 bg-grid" aria-hidden />
       <div className="relative mx-auto max-w-[1200px] px-5 md:px-8">
-        <SectionHeading index="03" label="Projects" title="Selected launches" />
+        <SectionHeading index="03" label="Projects" title="Selected projects" />
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-6">
           {projects.map((project, i) => (
@@ -62,7 +62,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="mt-5 inline-flex items-center gap-2 self-start font-mono text-xs uppercase tracking-wider text-signal hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal"
                     >
-                      <FaGithub className="h-4 w-4" aria-hidden /> Source code
+                      <GithubLogo className="h-4 w-4" weight="fill" aria-hidden /> Source code
                       <span aria-hidden>↗</span>
                     </a>
                   )}

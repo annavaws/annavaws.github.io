@@ -12,13 +12,13 @@ export default function Experience() {
   return (
     <section id="experience" className="relative py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-5 md:px-8">
-        <SectionHeading index="02" label="Experience" title="Mission log" />
+        <SectionHeading index="02" label="Experience" title="Where I've worked" />
 
         <Reveal>
           <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
             <h3 className="text-2xl font-semibold text-fg">
               {aisahub.org}{" "}
-              <span className="font-normal text-muted">— {aisahub.place}</span>
+              <span className="font-normal text-muted">{aisahub.place}</span>
             </h3>
             <p className="font-mono text-xs uppercase tracking-wider text-muted">
               {aisahub.dates}
@@ -118,7 +118,7 @@ export default function Experience() {
                 <h3 className="mt-1 text-xl font-semibold text-fg">
                   {role.org}
                   {role.place && (
-                    <span className="font-normal text-muted"> — {role.place}</span>
+                    <span className="font-normal text-muted"> {role.place}</span>
                   )}
                 </h3>
                 <p className="label mt-1 !text-accent">{role.title}</p>

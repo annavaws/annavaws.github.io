@@ -1,5 +1,9 @@
 import React from "react";
-import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import {
+  EnvelopeSimple,
+  GithubLogo,
+  LinkedinLogo,
+} from "@phosphor-icons/react";
 import { profile } from "@/data/content";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -22,7 +26,7 @@ export default function Contact() {
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <a href={`mailto:${profile.email}`} className="btn-primary">
-              <FaEnvelope aria-hidden /> {profile.email}
+              <EnvelopeSimple weight="fill" aria-hidden /> {profile.email}
             </a>
             <a
               href={profile.linkedin}
@@ -30,7 +34,7 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="btn-ghost"
             >
-              <FaLinkedin aria-hidden /> LinkedIn
+              <LinkedinLogo weight="fill" aria-hidden /> LinkedIn
             </a>
             <a
               href={profile.github}
@@ -38,7 +42,7 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="btn-ghost"
             >
-              <FaGithub aria-hidden /> GitHub
+              <GithubLogo weight="fill" aria-hidden /> GitHub
             </a>
           </div>
         </Reveal>

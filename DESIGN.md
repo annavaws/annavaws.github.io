@@ -11,7 +11,7 @@
 - **Direction:** Orbital Mission Control (retro-futuristic, restrained).
 - **Decoration level:** Expressive in the hero and game, intentional everywhere else.
 - **Mood:** A calm control room at night. Deep space ink, one warm signal colour, telemetry labels. Serious engineering with a playful rocket.
-- **Motifs:** Dotted globe with delivery routes (eSIM across countries), orbit rings, telemetry readouts, mission log.
+- **Motifs:** Dotted globe with delivery routes (eSIM across countries), orbit rings, plain section names.
 
 ## Typography
 - **Display/Hero:** Big Shoulders Display (700–900), uppercase, tight leading. Industrial signage feel.
@@ -54,3 +54,4 @@
 | 2026-10-04 | One-page scroll + Blog | Scroll-driven story. /about and /project redirect to anchors. |
 | 2026-10-04 | Rocket Courier game section | Collect stack tokens, dodge 502s and race conditions from the CV. |
 | 2026-10-04 | Hallmark audit fixes | Removed glows and accent headline fills (index labels restored at the owner's request); hero fits the fold; globe is draggable; colours moved to tokens; stats limited to figures verified in git. |
+| 2026-10-05 | Taste-skill pass | Hero reduced to label, name, intro and buttons; no time or location strip; no em-dashes or decorative dots; plain section headings; Phosphor icons. Numbered labels and dark-only theme kept by owner preference. |
