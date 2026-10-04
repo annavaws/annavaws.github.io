@@ -9,6 +9,7 @@ export const profile = {
   github: "https://github.com/annavaws",
   summary:
     "Full stack engineer and University of Indonesia Computer Science graduate, working remotely with a Seoul-based team since 2025. I build across the stack: NestJS and PostgreSQL services, Next.js and React front ends, Shopify storefronts, and Python data pipelines.",
+  lede: "I build across the stack: NestJS and PostgreSQL services, Next.js and React front ends, Shopify storefronts, and Python data pipelines.",
   about:
     "Recent work centres on a multi-tenant eSIM commerce platform, including marketplace integrations, payment and refund flows, security fixes, and production debugging, delivered with automated tests and an AI-assisted development workflow.",
 };
@@ -24,6 +25,7 @@ export const navLinks = [
 
 export type Stat = {
   value: number;
+  prefix?: string;
   suffix?: string;
   decimals?: number;
   label: string;
@@ -32,10 +34,12 @@ export type Stat = {
 
 export const stats: Stat[] = [
   {
-    value: 176,
-    suffix: "×",
-    label: "Faster backfill",
-    detail: "Migration rewritten as set-based SQL, 405s down to 2.3s",
+    value: 2.3,
+    prefix: "405s → ",
+    suffix: "s",
+    decimals: 1,
+    label: "Migration backfill",
+    detail: "Rewritten as set-based SQL on PlanetT",
   },
   {
     value: 66,
@@ -43,10 +47,12 @@ export const stats: Stat[] = [
     detail: "Destination search ordered by the shopper's country",
   },
   {
-    value: 106,
-    suffix: "/118",
-    label: "Test spec files",
-    detail: "First author on the PlanetT service test suite",
+    value: 99.5,
+    prefix: "31% → ",
+    suffix: "%",
+    decimals: 1,
+    label: "Log attribution",
+    detail: "Coverage of PlanetT transaction logs after the migration",
   },
   {
     value: 8,

@@ -60,8 +60,13 @@ export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const [webgl, setWebgl] = useState<boolean | null>(null);
   const [visible, setVisible] = useState(true);
+  const [finePointer, setFinePointer] = useState(false);
 
-  useEffect(() => setWebgl(hasWebGL()), []);
+  useEffect(() => {
+    setWebgl(hasWebGL());
+    // Dragging the globe is mouse-only; touch keeps normal scrolling
+    setFinePointer(window.matchMedia("(pointer: fine)").matches);
+  }, []);
 
   // Stop rendering the 3D scene once the hero is scrolled away
   useEffect(() => {
@@ -77,13 +82,9 @@ export default function Hero() {
     <section
       ref={ref}
       id="top"
-      className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden"
+      className="relative flex flex-col overflow-hidden"
     >
       <div className="absolute inset-0 bg-grid" aria-hidden />
-      <div
-        aria-hidden
-        className="absolute right-[-10%] top-1/2 hidden h-[70vmin] w-[70vmin] -translate-y-1/2 rounded-full bg-accent/10 blur-[120px] lg:block"
-      />
       <div className="absolute inset-0" aria-hidden>
         {use3d ? (
           <HeroScene active={visible} />
@@ -94,7 +95,7 @@ export default function Hero() {
         )}
       </div>
 
-      <div className="relative mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-5 pb-10 pt-32 md:px-8">
+      <div className="relative mx-auto flex w-full max-w-[1200px] flex-col px-5 pb-56 pt-28 md:px-8 md:pb-20 md:pt-32">
         <motion.p
           className="label mb-6 flex items-center gap-3"
           initial={reduce ? false : { opacity: 0 }}
@@ -105,25 +106,23 @@ export default function Hero() {
           {profile.role} · Open to remote work
         </motion.p>
 
-        <h1 className="font-display text-[clamp(3.5rem,13vw,11.5rem)] font-black uppercase leading-[0.82] tracking-tight text-fg">
+        <h1 className="font-display text-[clamp(3.5rem,11vw,9.5rem)] font-black uppercase leading-[1] tracking-tight text-fg">
           <span className="sr-only">{profile.name}</span>
           <StaggerLine text="Annava" delay={0.15} />
-          <span className="text-accent">
-            <StaggerLine text="Wisha Sikoko" delay={0.35} />
-          </span>
+          <StaggerLine text="Wisha Sikoko" delay={0.35} />
         </h1>
 
         <motion.div
           initial={reduce ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 max-w-xl"
+          className="mt-6 max-w-2xl"
         >
           <p className="font-mono text-sm uppercase tracking-wider text-fg">
             {profile.focus}
           </p>
           <p className="mt-4 text-lg leading-relaxed text-muted">
-            {profile.summary}
+            {profile.lede}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#experience" className="btn-primary">
@@ -137,13 +136,15 @@ export default function Hero() {
       </div>
 
       {/* Telemetry strip */}
-      <div className="relative border-t border-line bg-ink/70 backdrop-blur">
+      <div className="relative border-t border-line bg-ink/85">
         <dl className="mx-auto grid max-w-[1200px] grid-cols-2 gap-x-6 gap-y-3 px-5 py-4 font-mono text-xs uppercase tracking-wider md:grid-cols-4 md:px-8">
           {[
             ["Base", profile.location],
             ["Local time", <LocalTime key="t" />],
             ["Current", "Aisahub Inc · Seoul"],
-            ["Mode", "Remote since 2025"],
+            use3d && finePointer
+              ? ["Globe", "Drag to spin"]
+              : ["Mode", "Remote since 2025"],
           ].map(([k, v]) => (
             <div key={k as string}>
               <dt className="text-muted">{k}</dt>

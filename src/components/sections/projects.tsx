@@ -7,10 +7,10 @@ import { TiltCard } from "@/components/ui/tilt-card";
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-24 md:py-36">
+    <section id="projects" className="relative py-24 md:py-40">
       <div className="absolute inset-0 bg-grid" aria-hidden />
       <div className="relative mx-auto max-w-[1200px] px-5 md:px-8">
-        <SectionHeading index="03" label="Projects" title="Selected launches" />
+        <SectionHeading title="Selected launches" />
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-6">
           {projects.map((project, i) => (

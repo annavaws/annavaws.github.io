@@ -11,9 +11,9 @@ const RocketGame = dynamic(() => import("@/components/game/rocket-game"), {
 
 export default function Game() {
   return (
-    <section id="game" className="relative py-24 md:py-36">
+    <section id="game" className="relative py-16 md:py-24">
       <div className="mx-auto max-w-[1200px] px-5 md:px-8">
-        <SectionHeading index="05" label="Break room" title="Take the rocket for a spin" />
+        <SectionHeading title="Take the rocket for a spin" />
         <Reveal>
           <RocketGame />
         </Reveal>

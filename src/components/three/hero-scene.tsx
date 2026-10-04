@@ -1,9 +1,8 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
+import { token } from "@/utils/tokens";
 
-const ACCENT = "#FF7A1A";
-const SIGNAL = "#5CE1E6";
 const GLOBE_R = 2;
 
 // Deterministic PRNG so the globe looks the same on every visit
@@ -76,7 +75,7 @@ function Globe() {
 
     // Delivery routes: arcs between destinations
     const material = new THREE.LineBasicMaterial({
-      color: ACCENT,
+      color: token("accent"),
       transparent: true,
       opacity: 0.45,
     });
@@ -111,7 +110,7 @@ function Globe() {
   );
 
   const rimUniforms = useMemo(
-    () => ({ uColor: { value: new THREE.Color(SIGNAL) } }),
+    () => ({ uColor: { value: new THREE.Color(token("signal")) } }),
     []
   );
 
@@ -134,13 +133,13 @@ function Globe() {
       {/* Dark core hides the far side of the dot shell */}
       <mesh>
         <sphereGeometry args={[GLOBE_R - 0.02, 48, 48]} />
-        <meshBasicMaterial color="#0A101C" />
+        <meshBasicMaterial color={token("ink")} />
       </mesh>
       <points>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[surface, 3]} />
         </bufferGeometry>
-        <pointsMaterial color="#4B6A9B" size={0.024} sizeAttenuation />
+        <pointsMaterial color={token("dot")} size={0.024} sizeAttenuation />
       </points>
       <points>
         <bufferGeometry>
@@ -149,7 +148,12 @@ function Globe() {
             args={[hubPositions, 3]}
           />
         </bufferGeometry>
-        <pointsMaterial ref={hubs} color={ACCENT} size={0.075} sizeAttenuation />
+        <pointsMaterial
+          ref={hubs}
+          color={token("accent")}
+          size={0.075}
+          sizeAttenuation
+        />
       </points>
       {routes.map((route, i) => (
         <React.Fragment key={i}>
@@ -160,7 +164,7 @@ function Globe() {
             }}
           >
             <sphereGeometry args={[0.028, 8, 8]} />
-            <meshBasicMaterial color="#FFE1C7" />
+            <meshBasicMaterial color={token("fg")} />
           </mesh>
         </React.Fragment>
       ))}
@@ -204,11 +208,11 @@ function OrbitRing({
     <group rotation={tilt}>
       <mesh>
         <torusGeometry args={[radius, 0.004, 6, 180]} />
-        <meshBasicMaterial color={SIGNAL} transparent opacity={0.35} />
+        <meshBasicMaterial color={token("signal")} transparent opacity={0.35} />
       </mesh>
       <mesh ref={sat}>
         <octahedronGeometry args={[0.09, 0]} />
-        <meshBasicMaterial color={ACCENT} wireframe />
+        <meshBasicMaterial color={token("accent")} wireframe />
       </mesh>
     </group>
   );
@@ -239,7 +243,7 @@ function Stars() {
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        color="#C9D6F0"
+        color={token("fg")}
         size={0.09}
         sizeAttenuation
         transparent
@@ -249,26 +253,72 @@ function Stars() {
   );
 }
 
-// Moves the planet with the pointer and scroll position
+// Moves the planet with the pointer and scroll position, and lets the
+// visitor drag anywhere in the hero to spin it
 function Rig({ children }: { children: React.ReactNode }) {
   const outer = useRef<THREE.Group>(null);
   const inner = useRef<THREE.Group>(null);
+  const spin = useRef<THREE.Group>(null);
   const pointer = useRef({ x: 0, y: 0 });
+  const drag = useRef({ active: false, x: 0, y: 0, vx: 0, vy: 0 });
   const width = useThree((s) => s.size.width);
   const wide = width >= 900;
 
   useEffect(() => {
+    const d = drag.current;
     const onMove = (e: PointerEvent) => {
       pointer.current.x = (e.clientX / window.innerWidth) * 2 - 1;
       pointer.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+      if (d.active) {
+        d.vx = (e.clientX - d.x) * 0.005;
+        d.vy = (e.clientY - d.y) * 0.005;
+        d.x = e.clientX;
+        d.y = e.clientY;
+      }
+    };
+    const onDown = (e: PointerEvent) => {
+      // Touch is left alone so the page still scrolls
+      if (e.pointerType === "touch") return;
+      const target = e.target as HTMLElement;
+      if (!target.closest("#top") || target.closest("a, button")) return;
+      d.active = true;
+      d.x = e.clientX;
+      d.y = e.clientY;
+      document.body.style.userSelect = "none";
+    };
+    const onUp = () => {
+      d.active = false;
+      document.body.style.userSelect = "";
     };
     window.addEventListener("pointermove", onMove, { passive: true });
-    return () => window.removeEventListener("pointermove", onMove);
+    window.addEventListener("pointerdown", onDown);
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+      document.body.style.userSelect = "";
+    };
   }, []);
 
   useFrame((_, delta) => {
     const k = 1 - Math.exp(-delta * 3);
     const scroll = Math.min(window.scrollY / window.innerHeight, 1.2);
+    const d = drag.current;
+    if (spin.current) {
+      spin.current.rotation.y += d.vx;
+      spin.current.rotation.x = THREE.MathUtils.clamp(
+        spin.current.rotation.x + d.vy,
+        -0.9,
+        0.9
+      );
+      // Inertia after release; while held, motion stops when the pointer does
+      const friction = d.active ? 0.6 : 0.95;
+      d.vx *= friction;
+      d.vy *= friction;
+    }
     if (inner.current) {
       inner.current.rotation.y +=
         (pointer.current.x * 0.35 - inner.current.rotation.y) * k;
@@ -290,7 +340,9 @@ function Rig({ children }: { children: React.ReactNode }) {
 
   return (
     <group ref={outer} position={[wide ? 3 : 0, wide ? -0.1 : -2.3, 0]}>
-      <group ref={inner}>{children}</group>
+      <group ref={inner}>
+        <group ref={spin}>{children}</group>
+      </group>
     </group>
   );
 }

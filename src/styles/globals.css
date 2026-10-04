@@ -1,27 +1,51 @@
+/* Hallmark · design-system: DESIGN.md · audit fixes applied 2026-10-04 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Colour tokens as RGB channels so Tailwind opacity modifiers work.
+   Canvas and WebGL code read these through utils/tokens.ts. */
+:root {
+  --ink: 7 11 20;
+  --surface: 14 21 36;
+  --raised: 21 30 49;
+  --line: 34 48 73;
+  --fg: 232 236 244;
+  --muted: 138 150 173;
+  --accent: 255 122 26;
+  --signal: 92 225 230;
+  --danger: 255 77 94;
+  --ok: 74 222 128;
+  --dot: 75 106 155;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
-  background: #070b14;
+  background: rgb(var(--ink));
+  overflow-x: clip;
 }
 
 body {
-  color: #e8ecf4;
-  background: #070b14;
+  color: rgb(var(--fg));
+  background: rgb(var(--ink));
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
+h1,
+h2 {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
 @layer components {
-  /* Mono telemetry label, e.g. "01 / ABOUT" */
   .label {
     @apply font-mono text-xs uppercase tracking-[0.14em] text-signal;
   }
 
   .panel {
-    @apply rounded-xl border border-line bg-surface/80 backdrop-blur-sm;
+    @apply rounded-xl border border-line bg-surface;
   }
 
   .chip {
@@ -29,11 +53,11 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-mono text-sm uppercase tracking-wider text-ink transition-transform duration-200 ease-enter hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+    @apply inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-accent px-6 py-3 font-mono text-sm uppercase tracking-wider text-ink transition-transform duration-200 ease-enter hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:translate-y-0 active:brightness-90 disabled:cursor-not-allowed disabled:opacity-55;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2 rounded-full border border-line bg-ink/60 px-6 py-3 font-mono text-sm uppercase tracking-wider text-fg backdrop-blur transition-colors duration-200 hover:border-signal hover:text-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal;
+    @apply inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-ink/80 px-6 py-3 font-mono text-sm uppercase tracking-wider text-fg transition-colors duration-200 hover:border-signal hover:text-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal active:bg-raised disabled:cursor-not-allowed disabled:opacity-55;
   }
 }
 
@@ -50,10 +74,10 @@ body {
   .bg-grid {
     background-image: linear-gradient(
         to right,
-        rgba(34, 48, 73, 0.35) 1px,
+        rgb(var(--line) / 0.35) 1px,
         transparent 1px
       ),
-      linear-gradient(to bottom, rgba(34, 48, 73, 0.35) 1px, transparent 1px);
+      linear-gradient(to bottom, rgb(var(--line) / 0.35) 1px, transparent 1px);
     background-size: 64px 64px;
     mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
   }
@@ -63,17 +87,21 @@ body {
 .planet-fallback {
   background: radial-gradient(
       circle at 35% 30%,
-      rgba(92, 225, 230, 0.35),
+      rgb(var(--signal) / 0.35),
       transparent 45%
     ),
-    radial-gradient(circle at 50% 50%, #151e31 0%, #0e1524 60%, #070b14 100%);
-  box-shadow: 0 0 120px 10px rgba(255, 122, 26, 0.18),
-    inset -40px -40px 80px rgba(0, 0, 0, 0.6);
+    radial-gradient(
+      circle at 50% 50%,
+      rgb(var(--raised)) 0%,
+      rgb(var(--surface)) 60%,
+      rgb(var(--ink)) 100%
+    );
+  border: 1px solid rgb(var(--line));
 }
 
 ::selection {
-  color: #070b14;
-  background-color: #ff7a1a;
+  color: rgb(var(--ink));
+  background-color: rgb(var(--accent));
 }
 
 @media (prefers-reduced-motion: reduce) {

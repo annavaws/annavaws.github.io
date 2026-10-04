@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { token } from "@/utils/tokens";
 
 type Phase = "idle" | "playing" | "over";
 type Item = {
@@ -31,13 +32,6 @@ const TOKENS = [
   "Tests",
 ];
 const HAZARDS = ["502", "RACE", "BUG", "NULL", "LEAK", "TIMEOUT"];
-const COLORS = {
-  ink: "#070B14",
-  fg: "#E8ECF4",
-  accent: "#FF7A1A",
-  signal: "#5CE1E6",
-  danger: "#FF4D5E",
-};
 const MAX_LIVES = 3;
 const BEST_KEY = "rocket-courier-best";
 
@@ -141,6 +135,15 @@ export default function RocketGame() {
     if (!canvas || !wrap || !ctx) return;
     const g = game.current;
     const fontFamily = getComputedStyle(canvas).fontFamily;
+    const COLORS = {
+      ink: token("ink"),
+      fg: token("fg"),
+      accent: token("accent"),
+      signal: token("signal"),
+      danger: token("danger"),
+      dangerFill: token("danger", 0.16),
+      signalFill: token("signal", 0.12),
+    };
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -344,7 +347,7 @@ export default function RocketGame() {
         const color = item.hazard ? COLORS.danger : COLORS.signal;
         const width = ctx.measureText(item.label).width + 22;
         pill(ctx, item.x, item.y, width, 26);
-        ctx.fillStyle = item.hazard ? "rgba(255,77,94,0.16)" : "rgba(92,225,230,0.12)";
+        ctx.fillStyle = item.hazard ? COLORS.dangerFill : COLORS.signalFill;
         ctx.fill();
         ctx.strokeStyle = color;
         ctx.lineWidth = 1.5;
@@ -491,7 +494,7 @@ export default function RocketGame() {
       </div>
 
       {phase !== "playing" && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-ink/70 px-6 text-center backdrop-blur-[2px]">
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-ink/80 px-6 text-center">
           {phase === "over" ? (
             <>
               <p className="label !text-danger">Signal lost</p>

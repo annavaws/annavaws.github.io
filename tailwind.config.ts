@@ -8,16 +8,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#070B14",
-        surface: "#0E1524",
-        raised: "#151E31",
-        line: "#223049",
-        fg: "#E8ECF4",
-        muted: "#8A96AD",
-        accent: "#FF7A1A",
-        signal: "#5CE1E6",
-        danger: "#FF4D5E",
-        ok: "#4ADE80",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        raised: "rgb(var(--raised) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        fg: "rgb(var(--fg) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
+        signal: "rgb(var(--signal) / <alpha-value>)",
+        danger: "rgb(var(--danger) / <alpha-value>)",
+        ok: "rgb(var(--ok) / <alpha-value>)",
       },
       fontFamily: {
         display: ["var(--font-display)", "Impact", "sans-serif"],

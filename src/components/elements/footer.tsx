@@ -8,9 +8,13 @@ const Footer = () => {
         <span>
           © {new Date().getFullYear()} {profile.name}
         </span>
-        <span className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 animate-blink rounded-full bg-ok" />
-          All systems nominal
+        <span className="flex items-center gap-5">
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+            GitHub
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+            LinkedIn
+          </a>
         </span>
         <a href="#" className="hover:text-accent">
           Back to top ↑

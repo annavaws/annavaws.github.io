@@ -110,7 +110,6 @@ function SkillSphere({ activeGroup }: { activeGroup: string | null }) {
       aria-hidden
       className="relative mx-auto aspect-square w-full max-w-[520px] select-none"
     >
-      <div className="absolute inset-[12%] rounded-full bg-signal/5 blur-3xl" />
       {tags.map((tag, i) => (
         <span
           key={tag.text}
@@ -137,9 +136,9 @@ export default function Skills() {
   const [activeGroup, setActiveGroup] = useState<string | null>(null);
 
   return (
-    <section id="skills" className="relative py-24 md:py-36">
+    <section id="skills" className="relative py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-5 md:px-8">
-        <SectionHeading index="04" label="Skills" title="Payload manifest" />
+        <SectionHeading title="Payload manifest" />
 
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal>

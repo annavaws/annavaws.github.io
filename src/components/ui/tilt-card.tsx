@@ -28,7 +28,7 @@ export function TiltCard({
   const rotateX = useSpring(useTransform(py, [0, 1], [max, -max]), spring);
   const glareX = useTransform(px, (v) => `${v * 100}%`);
   const glareY = useTransform(py, (v) => `${v * 100}%`);
-  const glare = useMotionTemplate`radial-gradient(420px circle at ${glareX} ${glareY}, rgba(92,225,230,0.14), transparent 60%)`;
+  const glare = useMotionTemplate`radial-gradient(420px circle at ${glareX} ${glareY}, rgb(var(--signal) / 0.14), transparent 60%)`;
 
   const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (reduce || e.pointerType === "touch") return;

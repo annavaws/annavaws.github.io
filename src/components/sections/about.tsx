@@ -20,14 +20,15 @@ function CountUp({ stat }: { stat: Stat }) {
     const controls = animate(0, stat.value, {
       duration: 1.6,
       ease: [0.16, 1, 0.3, 1],
-      onUpdate: (v) => setValue(Math.round(v)),
+      onUpdate: (v) => setValue(v),
     });
     return () => controls.stop();
   }, [inView, reduce, stat.value]);
 
   return (
     <span ref={ref} className="tabular-nums">
-      {value}
+      {stat.prefix && <span className="text-muted">{stat.prefix}</span>}
+      {value.toFixed(stat.decimals ?? 0)}
       {stat.suffix && <span className="text-accent">{stat.suffix}</span>}
     </span>
   );
@@ -35,9 +36,9 @@ function CountUp({ stat }: { stat: Stat }) {
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 md:py-36">
+    <section id="about" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-[1200px] px-5 md:px-8">
-        <SectionHeading index="01" label="About" title="Engineer on the ground, systems in orbit" />
+        <SectionHeading title="Engineer on the ground, systems in orbit" />
 
         <div className="grid gap-12 lg:grid-cols-[360px_1fr] lg:gap-20">
           <Reveal>
@@ -53,13 +54,6 @@ export default function About() {
                   sizes="(min-width: 1024px) 360px, 90vw"
                   className="object-cover"
                 />
-              </div>
-              <div
-                className="flex items-center justify-between px-2 pb-1 pt-3 font-mono text-[11px] uppercase tracking-wider text-muted"
-                style={{ transform: "translateZ(50px)" }}
-              >
-                <span>UI · CS 2025</span>
-                <span className="text-signal">Crew: Full stack</span>
               </div>
             </TiltCard>
           </Reveal>
@@ -91,7 +85,7 @@ export default function About() {
         <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-4">
           {stats.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.08} className="bg-surface p-6">
-              <p className="font-display text-5xl font-extrabold text-fg md:text-6xl">
+              <p className="whitespace-nowrap font-display text-3xl font-extrabold text-fg sm:text-4xl md:text-5xl">
                 <CountUp stat={stat} />
               </p>
               <p className="label mt-3">{stat.label}</p>

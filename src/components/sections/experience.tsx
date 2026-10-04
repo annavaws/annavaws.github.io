@@ -10,9 +10,9 @@ export default function Experience() {
   const project = aisahub.projects[active];
 
   return (
-    <section id="experience" className="relative py-24 md:py-36">
+    <section id="experience" className="relative py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-5 md:px-8">
-        <SectionHeading index="02" label="Experience" title="Mission log" />
+        <SectionHeading title="Mission log" />
 
         <Reveal>
           <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
@@ -42,7 +42,7 @@ export default function Experience() {
                 onClick={() => setActive(i)}
                 className={cn(
                   "relative shrink-0 rounded-lg px-4 py-3 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal",
-                  i === active ? "text-fg" : "text-muted hover:text-fg"
+                  i === active ? "text-fg" : "text-muted hover:text-fg active:bg-raised"
                 )}
               >
                 {i === active && (

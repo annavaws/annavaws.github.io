@@ -5,20 +5,13 @@ import { Reveal } from "@/components/ui/reveal";
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative overflow-hidden py-24 md:py-36">
-      <div
-        aria-hidden
-        className="absolute left-1/2 top-full h-[60vmin] w-[120vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/15 blur-[120px]"
-      />
+    <section id="contact" className="relative py-28 md:py-44">
       <div className="relative mx-auto max-w-[1200px] px-5 md:px-8">
         <Reveal>
-          <p className="label mb-4">
-            <span className="text-accent">06</span> / Contact
-          </p>
-          <h2 className="font-display text-[clamp(3rem,10vw,8.5rem)] font-black uppercase leading-[0.85] text-fg">
+          <h2 className="font-display text-[clamp(3rem,10vw,8.5rem)] font-black uppercase leading-[1] text-fg">
             Let&apos;s work
             <br />
-            <span className="text-accent">together</span>
+            together
           </h2>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">
             Based in {profile.location} and open to remote work. Whether you
