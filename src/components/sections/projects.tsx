@@ -1,9 +1,16 @@
 import Image from "next/image";
 import React from "react";
-import { GithubLogo } from "@phosphor-icons/react";
+import { GithubLogo, Globe } from "@phosphor-icons/react";
 import { projects } from "@/data/content";
 import { Reveal, SectionHeading } from "@/components/ui/reveal";
 import { TiltCard } from "@/components/ui/tilt-card";
+
+const linkClass =
+  "inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-signal hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal";
+
+// Two wide cards on top, then rows of three. If the rest doesn't split into
+// rows of three, every card goes wide so no card sits alone on a row.
+const allWide = (projects.length - 2) % 3 !== 0;
 
 export default function Projects() {
   return (
@@ -17,8 +24,7 @@ export default function Projects() {
             <Reveal
               key={project.title}
               delay={(i % 3) * 0.08}
-              // First two cards are wide, the rest sit three across
-              className={i < 2 ? "lg:col-span-3" : "lg:col-span-2"}
+              className={allWide || i < 2 ? "lg:col-span-3" : "lg:col-span-2"}
             >
               <TiltCard className="panel flex flex-col p-4">
                 <div
@@ -55,16 +61,21 @@ export default function Projects() {
                       </li>
                     ))}
                   </ul>
-                  {project.repo && (
-                    <a
-                      href={project.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-5 inline-flex items-center gap-2 self-start font-mono text-xs uppercase tracking-wider text-signal hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal"
-                    >
-                      <GithubLogo className="h-4 w-4" weight="fill" aria-hidden /> Source code
-                      <span aria-hidden>↗</span>
-                    </a>
+                  {(project.live || project.repo) && (
+                    <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+                      {project.live && (
+                        <a href={project.live} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                          <Globe className="h-4 w-4" weight="bold" aria-hidden /> Live demo
+                          <span aria-hidden>↗</span>
+                        </a>
+                      )}
+                      {project.repo && (
+                        <a href={project.repo} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                          <GithubLogo className="h-4 w-4" weight="fill" aria-hidden /> Source code
+                          <span aria-hidden>↗</span>
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
               </TiltCard>
