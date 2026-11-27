@@ -1,33 +1,25 @@
-import { Inter, Lora, Anton, Rowdies } from "next/font/google";
-import { Albert_Sans, Poppins } from "next/font/google";
+import {
+  Big_Shoulders_Display,
+  Instrument_Sans,
+  JetBrains_Mono,
+} from "next/font/google";
 
-// define your variable fonts
-const inter = Inter({
+const display = Big_Shoulders_Display({
   subsets: ["latin"],
-  weight: ["300", "400"],
-});
-
-const lora = Lora({
-  subsets: ["latin"],
-  weight: ["400"],
+  weight: ["700", "800", "900"],
+  variable: "--font-display",
 });
 
-const albert = Albert_Sans({
+const body = Instrument_Sans({
   subsets: ["latin"],
-  weight: "400",
-});
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
 });
 
-const anton = Anton({
+const mono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: "400",
-});
-const rowdies = Rowdies({
-  subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500"],
+  variable: "--font-mono",
 });
 
-export { inter, lora, albert, poppins, anton, rowdies };
+export { display, body, mono };

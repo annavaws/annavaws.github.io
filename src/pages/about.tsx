@@ -1,11 +1,5 @@
-import AboutMore from "@/components/modules/AboutModules";
+import SectionRedirect from "@/components/elements/section-redirect";
 
 export default function About() {
-  return (
-    <>
-      <div className="relative z-10">
-        <AboutMore />
-      </div>
-    </>
-  );
+  return <SectionRedirect to="/#about" />;
 }
