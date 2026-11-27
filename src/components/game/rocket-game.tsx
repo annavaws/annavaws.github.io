@@ -451,6 +451,7 @@ export default function RocketGame() {
   return (
     <div
       ref={wrapRef}
+      data-cursor="native"
       className="panel relative h-[min(70vh,560px)] min-h-[420px] overflow-hidden !bg-ink"
     >
       <canvas

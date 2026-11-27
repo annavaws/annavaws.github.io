@@ -1,5 +1,6 @@
 import Navbar from "@/components/elements/navbar";
 import Footer from "@/components/elements/footer";
+import Cursor from "@/components/elements/cursor";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -52,6 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="canonical" href="https://annavaws.github.io" />
         <meta name="robots" content="index, follow" />
       </Head>
+      <Cursor />
       <Navbar />
       <Component {...pageProps} />
       <Footer />

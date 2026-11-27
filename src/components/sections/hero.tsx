@@ -1,21 +1,7 @@
-import dynamic from "next/dynamic";
 import { motion, useReducedMotion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { profile } from "@/data/content";
-import { cn } from "@/utils/cn";
-
-const HeroScene = dynamic(() => import("@/components/three/hero-scene"), {
-  ssr: false,
-});
-
-function hasWebGL() {
-  try {
-    const canvas = document.createElement("canvas");
-    return !!(canvas.getContext("webgl2") || canvas.getContext("webgl"));
-  } catch {
-    return false;
-  }
-}
+import Pond from "@/components/pond/pond";
 
 function StaggerLine({ text, delay }: { text: string; delay: number }) {
   const reduce = useReducedMotion();
@@ -43,17 +29,14 @@ function StaggerLine({ text, delay }: { text: string; delay: number }) {
 export default function Hero() {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
-  const [webgl, setWebgl] = useState<boolean | null>(null);
   const [visible, setVisible] = useState(true);
-  const [finePointer, setFinePointer] = useState(false);
+  const [touch, setTouch] = useState(false);
 
   useEffect(() => {
-    setWebgl(hasWebGL());
-    // Dragging the globe is mouse-only; touch keeps normal scrolling
-    setFinePointer(window.matchMedia("(pointer: fine)").matches);
+    setTouch(!window.matchMedia("(pointer: fine)").matches);
   }, []);
 
-  // Stop rendering the 3D scene once the hero is scrolled away
+  // Pause the pond once the hero is scrolled away
   useEffect(() => {
     if (!ref.current) return;
     const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting));
@@ -61,27 +44,17 @@ export default function Hero() {
     return () => io.disconnect();
   }, []);
 
-  const use3d = webgl === true && !reduce;
-
   return (
-    <section
-      ref={ref}
-      id="top"
-      className={cn(
-        "relative flex flex-col overflow-hidden",
-        use3d && finePointer && "cursor-grab active:cursor-grabbing"
-      )}
-    >
-      <div className="absolute inset-0 bg-grid" aria-hidden />
+    <section ref={ref} id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden">
       <div className="absolute inset-0" aria-hidden>
-        {use3d ? (
-          <HeroScene active={visible} />
-        ) : (
-          webgl !== null && (
-            <div className="planet-fallback absolute bottom-[-18vmin] left-1/2 h-[70vmin] w-[70vmin] -translate-x-1/2 rounded-full lg:bottom-auto lg:left-auto lg:right-[4%] lg:top-1/2 lg:h-[56vmin] lg:w-[56vmin] lg:-translate-y-1/2 lg:translate-x-0" />
-          )
-        )}
+        <Pond target={ref} active={visible} still={!!reduce} />
       </div>
+
+      {!reduce && (
+        <p className="label pointer-events-none absolute bottom-6 right-5 text-muted md:right-8" aria-hidden>
+          {touch ? "Tap the water" : "Click the water, then hold still"}
+        </p>
+      )}
 
       <div className="relative mx-auto flex w-full max-w-[1200px] flex-col px-5 pb-64 pt-24 md:px-8 md:pb-32">
         <motion.p

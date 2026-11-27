@@ -11,7 +11,7 @@
 - **Direction:** Orbital Mission Control (retro-futuristic, restrained).
 - **Decoration level:** Expressive in the hero and game, intentional everywhere else.
 - **Mood:** A calm control room at night. Deep space ink, one warm signal colour, telemetry labels. Serious engineering with a playful rocket.
-- **Motifs:** Dotted globe with delivery routes (eSIM across countries), orbit rings, plain section names.
+- **Motifs:** Dotted water surface with koi in the hero, orbit rings, plain section names.
 
 ## Typography
 - **Display/Hero:** Big Shoulders Display (700–900), uppercase, tight leading. Industrial signage feel.
@@ -41,10 +41,12 @@
 
 ## Motion
 - **Approach:** Expressive, scroll-driven.
-- **3D:** WebGL hero (three.js via react-three-fiber), lazy-loaded, paused off-screen. Pointer-tilt cards and a draggable skill sphere use CSS 3D.
+- **Hero pond:** 2D canvas (`src/components/pond/pond.tsx`), paused off-screen. Water is the dot grid (`--dot`), ripples are thin `--signal` rings, koi are `--fg` with one in four `--accent`. A click or tap sends a ripple and scatters nearby fish; when the cursor holds still they swim back and circle it. Moving the mouse leaves a faint ripple trail.
+- **Cursor:** Mono `+` glyph in `--signal` for fine pointers only (`src/components/elements/cursor.tsx`); it turns into an `--accent` `×` while pressed. Native cursor returns on links, buttons, fields and anything marked `data-cursor="native"` (the game).
+- **3D:** Pointer-tilt cards and a draggable skill sphere use CSS 3D.
 - **Easing:** enter `cubic-bezier(0.16, 1, 0.3, 1)`, springs for pointer-driven motion.
 - **Duration:** micro 100ms, short 200ms, medium 400ms, reveal 700ms.
-- **Accessibility:** `prefers-reduced-motion` disables WebGL animation, tilt and reveals. The game only runs when started by the user.
+- **Accessibility:** `prefers-reduced-motion` draws the pond as one still frame and disables tilt and reveals. The game only runs when started by the user.
 
 ## Decisions Log
 | Date | Decision | Rationale |
@@ -55,3 +57,4 @@
 | 2026-10-04 | Rocket Courier game section | Collect stack tokens, dodge 502s and race conditions from the CV. |
 | 2026-10-04 | Hallmark audit fixes | Removed glows and accent headline fills (index labels restored at the owner's request); hero fits the fold; globe is draggable; colours moved to tokens; stats limited to figures verified in git. |
 | 2026-10-05 | Taste-skill pass | Hero reduced to label, name, intro and buttons; no time or location strip; no em-dashes or decorative dots; plain section headings; Phosphor icons. Numbered labels and dark-only theme kept by owner preference. |
+| 2026-11-27 | Pond hero replaces the WebGL globe | Owner wanted something playful and interactive. Kept the orbital palette and type; ASCII restyle considered and declined. Added a glyph cursor with ripple trail. |

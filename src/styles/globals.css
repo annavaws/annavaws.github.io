@@ -83,20 +83,46 @@ h2 {
   }
 }
 
-/* Static planet shown when WebGL is unavailable or motion is reduced */
-.planet-fallback {
-  background: radial-gradient(
-      circle at 35% 30%,
-      rgb(var(--signal) / 0.35),
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 50% 50%,
-      rgb(var(--raised)) 0%,
-      rgb(var(--surface)) 60%,
-      rgb(var(--ink)) 100%
-    );
-  border: 1px solid rgb(var(--line));
+/* Text-glyph cursor (components/elements/cursor.tsx). Mouse only: the native
+   cursor is hidden except on links, buttons, fields and the game. */
+.glyph-cursor,
+.glyph-cursor * {
+  cursor: none;
+}
+.glyph-cursor :is(a, button, [role="button"], label, select) {
+  cursor: pointer;
+}
+.glyph-cursor :is(input, textarea) {
+  cursor: text;
+}
+.glyph-cursor [data-cursor="native"],
+.glyph-cursor [data-cursor="native"] * {
+  cursor: auto;
+}
+
+.glyph-cursor-el {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+.glyph-cursor-el span {
+  display: block;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono), monospace;
+  font-size: 20px;
+  line-height: 1;
+  color: rgb(var(--signal));
+  transition: transform 100ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 100ms linear;
+}
+.glyph-cursor-el.is-down span {
+  transform: translate(-50%, -50%) rotate(45deg) scale(0.8);
+  color: rgb(var(--accent));
+}
+.glyph-cursor-el[data-state="hidden"] span {
+  opacity: 0;
 }
 
 ::selection {
