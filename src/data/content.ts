@@ -259,9 +259,18 @@ export type Project = {
   description: string;
   stack: string[];
   repo?: string;
+  live?: string;
 };
 
 export const projects: Project[] = [
+  {
+    title: "Boothie",
+    image: "/boothie.png",
+    description:
+      "Digital photo booth in the browser. Pick a strip of two to four shots and a frame, take photos with flash colours and retakes, add a caption, then download the strip as an image or animated GIF.",
+    stack: ["Next.js", "React", "Tailwind", "Canvas", "gifenc"],
+    live: "https://photobooth-seven-gilt.vercel.app/",
+  },
   {
     title: "Vlecture",
     image: "/vlecture.png",
